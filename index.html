@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#171a16">
+  <meta name="description" content="Uma experiência interativa para explorar Platão e a alegoria da caverna.">
+  <title>Além das sombras — Platão e a caverna</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --ink: #171a16;
+      --paper: #f0eee7;
+      --muted: #a7aaa0;
+      --lime: #d6ef77;
+      --rust: #c46c4c;
+      --line: rgba(240, 238, 231, .2);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "Manrope", sans-serif;
+      --mono: "DM Mono", monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { margin: 0; background: var(--ink); color: var(--paper); font-family: var(--sans); }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    .topbar { height: 72px; display: flex; align-items: center; justify-content: space-between; padding: 0 6vw; border-bottom: 1px solid var(--line); }
+    .wordmark { display: flex; align-items: center; gap: 12px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; }
+    .wordmark-mark { width: 25px; height: 25px; display: grid; place-items: center; color: var(--ink); background: var(--lime); border-radius: 50%; font-family: var(--serif); font-size: 17px; }
+    .topnav { display: flex; gap: 32px; color: #c4c6be; font-size: 12px; }
+    .topnav a:hover { color: var(--lime); }
+    .edition { color: var(--muted); font: 10px var(--mono); text-transform: uppercase; }
+    .hero { min-height: 650px; position: relative; display: flex; align-items: flex-end; overflow: hidden; padding: 88px 10vw 82px; background: #22231f; }
+    .hero::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,15,13,.92) 0%, rgba(13,15,13,.62) 49%, rgba(13,15,13,.12) 100%), linear-gradient(0deg, rgba(13,15,13,.55), transparent 55%), url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2200&q=85") center 49% / cover; transform: scale(1.02); }
+    .hero-content { max-width: 760px; position: relative; animation: rise .8s both; }
+    .eyebrow { color: var(--lime); font: 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; }
+    h1 { margin: 26px 0 20px; font: 600 clamp(56px, 8vw, 108px)/.98 var(--serif); letter-spacing: 0; }
+    h1 em { color: var(--lime); font-weight: 500; }
+    .hero-copy { max-width: 485px; color: #d0d1ca; font-size: 15px; line-height: 1.8; }
+    .hero-link { display: inline-flex; gap: 14px; align-items: center; margin-top: 30px; color: var(--lime); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .06em; }
+    .hero-link span { font-size: 19px; transition: transform .2s; }
+    .hero-link:hover span { transform: translateY(4px); }
+    .hero-index { position: absolute; right: 6vw; bottom: 42px; color: rgba(240,238,231,.7); font: 10px var(--mono); writing-mode: vertical-rl; }
+    .intro { padding: 118px 12vw 122px; display: grid; grid-template-columns: .8fr 1.2fr; gap: 9vw; border-bottom: 1px solid var(--line); }
+    .section-label { color: var(--rust); font: 11px var(--mono); text-transform: uppercase; letter-spacing: .08em; }
+    .intro h2, .section-heading { margin: 17px 0 0; font: 500 clamp(36px, 4vw, 54px)/1.12 var(--serif); }
+    .intro-text { max-width: 640px; color: #c6c8c0; font-size: 15px; line-height: 1.9; }
+    .intro-text p { margin: 0 0 20px; }
+    .quote { border-left: 2px solid var(--lime); margin: 30px 0 0; padding: 4px 0 4px 20px; color: var(--paper); font: 500 20px/1.5 var(--serif); }
+    .quote cite { display: block; margin-top: 12px; color: var(--muted); font: 10px var(--mono); font-style: normal; text-transform: uppercase; }
+    .plato-portrait { margin: 32px 0 0; }
+    .plato-portrait img { display: block; width: 100%; height: 300px; object-fit: cover; object-position: center 28%; background: #d7d4ca; }
+    .image-credit { margin: 0; padding-top: 10px; color: var(--muted); font: 9px/1.6 var(--mono); }
+    .image-credit a { color: var(--lime); text-decoration: underline; text-underline-offset: 3px; }
+    .cave-story { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: center; padding: 100px 10vw; border-bottom: 1px solid var(--line); }
+    .cave-figure { margin: 0; }
+    .cave-figure img { display: block; width: 100%; max-height: 580px; object-fit: contain; background: #e7e4dc; }
+    .cave-copy p { max-width: 500px; color: #c6c8c0; font-size: 14px; line-height: 1.9; }
+    .cave-copy .section-heading { margin-bottom: 24px; }
+    .journey { padding: 112px 10vw 120px; background: #e8e5dc; color: var(--ink); }
+    .journey .section-label { color: #a44f35; }
+    .journey-head { display: flex; justify-content: space-between; align-items: end; gap: 30px; margin-bottom: 48px; }
+    .journey .section-heading { max-width: 560px; }
+    .journey-intro { max-width: 295px; color: #585b53; font-size: 13px; line-height: 1.7; }
+    .journey-layout { display: grid; grid-template-columns: 1.12fr .88fr; min-height: 425px; }
+    .journey-image { position: relative; min-height: 425px; overflow: hidden; background: #292b24; }
+    .journey-image img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: opacity .35s, transform .6s; }
+    .journey-image:hover img { transform: scale(1.025); }
+    .image-caption { position: absolute; bottom: 18px; left: 20px; color: white; font: 10px var(--mono); text-shadow: 0 1px 5px #000; }
+    .journey-panel { display: flex; flex-direction: column; justify-content: space-between; padding: 34px 38px; background: #d8d5cb; }
+    .step-count { color: #686b62; font: 10px var(--mono); text-transform: uppercase; }
+    .step-title { margin: 18px 0 14px; font: 500 34px/1.1 var(--serif); }
+    .step-copy { max-width: 380px; color: #4b4e47; font-size: 13px; line-height: 1.8; }
+    .step-nav { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-top: 38px; }
+    .step-button { border: 0; border-top: 1px solid #a6a79d; padding: 12px 0 0; color: #66695f; background: none; text-align: left; cursor: pointer; font: 10px var(--mono); transition: color .2s, border-color .2s; }
+    .step-button[aria-current="step"] { border-color: #9c4d34; color: #9c4d34; }
+    .step-button:hover { color: #9c4d34; }
+    .ideas { padding: 112px 10vw 120px; }
+    .ideas-top { display: grid; grid-template-columns: 1fr 1fr; gap: 8vw; align-items: end; margin-bottom: 52px; }
+    .ideas-top p { max-width: 420px; color: #b6b9b0; font-size: 14px; line-height: 1.8; }
+    .idea-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); }
+    .idea { padding: 25px 26px 12px 0; }
+    .idea + .idea { padding-left: 26px; border-left: 1px solid var(--line); }
+    .idea-number { color: var(--lime); font: 10px var(--mono); }
+    .idea h3 { margin: 20px 0 10px; font: 500 24px var(--serif); }
+    .idea p { max-width: 300px; margin: 0; color: #b6b9b0; font-size: 12px; line-height: 1.8; }
+    .daily-note { max-width: 790px; margin: 34px 0 0; color: #b6b9b0; font-size: 12px; line-height: 1.8; }
+    .concepts { padding: 92px 10vw 104px; background: #e8e5dc; color: var(--ink); }
+    .concepts .section-label { color: #a44f35; }
+    .concept-grid { display: grid; grid-template-columns: repeat(4, 1fr); margin-top: 44px; border-top: 1px solid #b9b7ad; }
+    .concept { padding: 22px 22px 0 0; }
+    .concept + .concept { padding-left: 22px; border-left: 1px solid #b9b7ad; }
+    .concept-number { color: #a44f35; font: 10px var(--mono); }
+    .concept h3 { margin: 18px 0 10px; font: 500 22px/1.2 var(--serif); }
+    .concept p { margin: 0; color: #4b4e47; font-size: 12px; line-height: 1.8; }
+    .quiz { background: #c46c4c; color: #1a1b17; padding: 80px 10vw 86px; }
+    .quiz-inner { display: grid; grid-template-columns: .8fr 1.2fr; gap: 8vw; }
+    .quiz .section-label { color: #3a251d; }
+    .quiz h2 { margin: 15px 0 0; font: 500 clamp(36px, 4vw, 52px)/1.1 var(--serif); }
+    .question { margin: 4px 0 24px; font: 500 21px/1.4 var(--serif); }
+    .answers { display: grid; gap: 9px; }
+    .answer { width: 100%; padding: 14px 16px; border: 1px solid rgba(26,27,23,.4); background: transparent; color: inherit; text-align: left; cursor: pointer; font-size: 12px; transition: background .2s, color .2s; }
+    .answer:hover, .answer[aria-pressed="true"] { background: #1a1b17; color: var(--paper); }
+    .quiz-result { min-height: 26px; margin: 17px 0 0; font-size: 12px; line-height: 1.6; }
+    footer { display: flex; justify-content: space-between; gap: 24px; padding: 24px 6vw; color: var(--muted); font: 10px var(--mono); }
+    footer a { color: var(--lime); }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 760px) {
+      .topbar { height: 62px; padding: 0 4vw; }
+      .wordmark { gap: 7px; font-size: 9px; }
+      .wordmark-mark { width: 22px; height: 22px; }
+      .topnav { gap: 8px; font-size: 9px; }
+      .edition { display: none; }
+      .hero { min-height: 620px; padding: 72px 8vw; }
+      .hero::before { background-position: 58% center; }
+      .hero-copy { font-size: 13px; }
+      .intro { padding: 78px 8vw; grid-template-columns: 1fr; gap: 27px; }
+      .plato-portrait { max-width: 380px; }
+      .cave-story { grid-template-columns: 1fr; gap: 28px; padding: 76px 8vw; }
+      .cave-figure img { max-height: 460px; }
+      .journey { padding: 78px 8vw; }
+      .journey-head, .ideas-top { display: block; }
+      .journey-intro, .ideas-top p { margin-top: 20px; }
+      .journey-layout { grid-template-columns: 1fr; }
+      .journey-image { min-height: 300px; }
+      .journey-panel { min-height: 330px; padding: 28px 24px; }
+      .step-nav { gap: 6px; }
+      .step-button { font-size: 9px; }
+      .ideas { padding: 78px 8vw; }
+      .idea-grid { grid-template-columns: 1fr; }
+      .idea, .idea + .idea { padding: 22px 0; border-left: 0; border-bottom: 1px solid var(--line); }
+      .idea h3 { margin: 12px 0 7px; }
+      .concepts { padding: 76px 8vw; }
+      .concept-grid { grid-template-columns: 1fr 1fr; }
+      .concept, .concept + .concept { padding: 20px 12px 20px 0; border-left: 0; border-bottom: 1px solid #b9b7ad; }
+      .concept:nth-child(even) { padding-left: 16px; border-left: 1px solid #b9b7ad; }
+      .quiz { padding: 66px 8vw; }
+      .quiz-inner { grid-template-columns: 1fr; gap: 28px; }
+      footer { padding: 20px 8vw; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="#inicio" aria-label="Além das sombras, início"><span class="wordmark-mark">φ</span> Caderno de ideias</a>
+    <nav class="topnav" aria-label="Navegação principal">
+      <a href="#platao">Platão</a>
+      <a href="#percurso">A alegoria</a>
+      <a href="#cotidiano">No cotidiano</a>
+      <a href="#perguntas">Explore</a>
+    </nav>
+    <span class="edition">Filosofia · 01</span>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio" aria-labelledby="hero-title">
+      <div class="hero-content">
+        <span class="eyebrow">Platão · Livro VII da República</span>
+        <h1 id="hero-title">Além das<br><em>sombras.</em></h1>
+        <p class="hero-copy">E se aquilo que chamamos de realidade fosse apenas um reflexo? Entre na caverna de Platão e acompanhe uma das ideias mais duradouras da filosofia.</p>
+        <a class="hero-link" href="#platao">Começar a jornada <span aria-hidden="true">↓</span></a>
+      </div>
+      <span class="hero-index">UMA IDEIA SOBRE VER E SABER · 01—03</span>
+    </section>
+
+    <section class="intro" id="platao" aria-labelledby="platao-title">
+      <div>
+        <span class="section-label">01 / O filósofo</span>
+        <h2 id="platao-title">Quem foi<br>Platão?</h2>
+        <figure class="plato-portrait">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/d/db/Plato_bust.png" alt="Busto de mármore representando Platão" loading="lazy">
+          <figcaption class="image-credit">Busto de Platão · imagem em CC0 · <a href="https://commons.wikimedia.org/wiki/File:Plato_bust.png" target="_blank" rel="noreferrer">Wikimedia Commons</a></figcaption>
+        </figure>
+      </div>
+      <div class="intro-text">
+        <p>Platão (c. 427–347 a.C.) foi um filósofo ateniense, discípulo de Sócrates e mestre de Aristóteles. Fundou a Academia em Atenas, um importante espaço de ensino e debate da Antiguidade.</p>
+        <p>Ele escreveu diálogos filosóficos: em vez de apresentar respostas como um manual, encenava conversas, perguntas e impasses. Sócrates é interlocutor em muitos deles, inclusive em <em>A República</em>, obra que inclui a alegoria da caverna.</p>
+        <p>Platão foi importante por marcar profundamente o modo como a filosofia ocidental discutiu conhecimento, educação, ética e política. A caverna reúne essas questões numa imagem: como passamos da opinião ao entendimento, e o que devemos fazer com o que aprendemos?</p>
+        <blockquote class="quote">“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, A República, Livro VII · tradução livre</cite></blockquote>
+      </div>
+    </section>
+
+    <section class="cave-story" aria-labelledby="cave-title">
+      <figure class="cave-figure">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Platon_Cave_Sanraedam_1604.jpg" alt="Gravura de 1604 mostrando a alegoria da caverna de Platão: prisioneiros observam sombras projetadas na parede" loading="lazy">
+        <figcaption class="image-credit">Jan Saenredam, 1604, segundo Cornelis van Haarlem · domínio público · <a href="https://commons.wikimedia.org/wiki/File:Platon_Cave_Sanraedam_1604.jpg" target="_blank" rel="noreferrer">Wikimedia Commons</a></figcaption>
+      </figure>
+      <div class="cave-copy">
+        <span class="section-label">Uma imagem para pensar</span>
+        <h2 class="section-heading" id="cave-title">O que acontece dentro da caverna?</h2>
+        <p>No Livro VII da <em>República</em>, Sócrates pede que imaginemos pessoas acorrentadas desde a infância, sem poder virar a cabeça. Atrás delas há uma fogueira e, entre o fogo e os prisioneiros, outras pessoas carregam objetos. Na parede aparecem sombras; os ecos fazem essas imagens parecerem falar. Para quem nunca viu outra coisa, as sombras são o próprio mundo.</p>
+        <p>Um prisioneiro é libertado. Primeiro, a luz dói e ele mal consegue olhar para os objetos que produziam as sombras. Depois é conduzido para fora: seus olhos se acostumam aos reflexos, às coisas e, por fim, ao Sol. A subida é gradual e difícil. Aprender, nessa imagem, não é receber uma resposta pronta, mas mudar o olhar e rever o que parecia certo.</p>
+        <p>O Sol representa a ideia do Bem, aquilo que torna possível compreender. Quando o antigo prisioneiro volta para contar o que viu, demora a enxergar no escuro e é ridicularizado. O retorno lembra que conhecimento também traz uma tarefa difícil: conversar com outras pessoas sem supor que a mudança será imediata.</p>
+      </div>
+    </section>
+
+    <section class="journey" id="percurso" aria-labelledby="journey-title">
+      <div class="journey-head">
+        <div><span class="section-label">02 / A alegoria</span><h2 class="section-heading" id="journey-title">Uma saída, quatro momentos.</h2></div>
+        <p class="journey-intro">Na <em>República</em>, Sócrates narra a subida de um prisioneiro da escuridão à luz. Percorra as etapas e veja como a imagem conversa com hábitos de hoje.</p>
+      </div>
+      <div class="journey-layout">
+        <div class="journey-image">
+          <img id="journey-photo" src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Platon_Cave_Sanraedam_1604.jpg" alt="Gravura de 1604 mostrando prisioneiros na caverna de Platão">
+          <span class="image-caption" id="image-caption">01 — Sombras e ecos</span>
+        </div>
+        <div class="journey-panel" aria-live="polite">
+          <div>
+            <span class="step-count" id="step-count">Momento 01 / 04</span>
+            <h3 class="step-title" id="step-title">As sombras</h3>
+            <p class="step-copy" id="step-copy">Os prisioneiros veem sombras e ouvem ecos desde sempre; não têm motivo para suspeitar que exista outra coisa. No cotidiano, um feed que repete os mesmos recortes pode parecer o retrato completo do mundo.</p>
+          </div>
+          <div class="step-nav" role="group" aria-label="Etapas da alegoria">
+            <button class="step-button" type="button" data-step="0" aria-current="step">01 · Sombras</button>
+            <button class="step-button" type="button" data-step="1">02 · Dúvida</button>
+            <button class="step-button" type="button" data-step="2">03 · Saída</button>
+            <button class="step-button" type="button" data-step="3">04 · Retorno</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="ideas" aria-labelledby="ideas-title">
+      <div class="ideas-top">
+        <div><span class="section-label">03 / A caverna hoje</span><h2 class="section-heading" id="ideas-title">Onde estão as sombras no cotidiano?</h2></div>
+        <p>A alegoria não diz que tudo o que vemos é falso. Ela nos convida a perguntar como uma informação chegou até nós, o que ficou fora do enquadramento e que evidências poderiam mudar nossa interpretação.</p>
+      </div>
+      <div class="idea-grid" id="cotidiano">
+        <article class="idea"><span class="idea-number">A / REDES E ALGORITMOS</span><h3>O feed é uma parede?</h3><p>Uma timeline mostra recortes escolhidos por pessoas e sistemas de recomendação. Se vemos sempre temas parecidos, podemos confundir essa seleção com o mundo inteiro. Vale abrir a fonte, buscar contexto e comparar perspectivas.</p></article>
+        <article class="idea"><span class="idea-number">B / BOATOS E GRUPOS</span><h3>Quando o eco confirma</h3><p>Uma afirmação repetida por amigos ou por muitas contas pode soar verdadeira só por ser familiar. Na imagem de Platão, os ecos reforçam as sombras. Checar autoria, data e evidências ajuda a interromper esse ciclo.</p></article>
+        <article class="idea"><span class="idea-number">C / APRENDER E MUDAR</span><h3>A luz pode incomodar</h3><p>Uma aula, conversa ou dado novo pode contrariar uma certeza. O desconforto lembra o olhar que se adapta à luz, mas não prova, por si só, que a ideia nova esteja certa: também precisamos examiná-la.</p></article>
+      </div>
+      <p class="daily-note">A comparação tem limites: ninguém precisa imaginar que possui sozinho a visão completa do “lado de fora”. A lição mais útil é praticar curiosidade, conferir razões e manter abertura para corrigir o próprio olhar.</p>
+    </section>
+
+    <section class="concepts" id="conceitos" aria-labelledby="concepts-title">
+      <span class="section-label">04 / Outras ideias de Platão</span>
+      <h2 class="section-heading" id="concepts-title">Um mapa para continuar pensando.</h2>
+      <div class="concept-grid">
+        <article class="concept"><span class="concept-number">01</span><h3>Mundo sensível</h3><p>É o mundo que percebemos pelos sentidos: múltiplo, mutável e sujeito a enganos, como as imagens vistas pelos prisioneiros.</p></article>
+        <article class="concept"><span class="concept-number">02</span><h3>Formas ou Ideias</h3><p>Platão propõe realidades inteligíveis, como o Belo e o Justo, que não se confundem com exemplos particulares e imperfeitos.</p></article>
+        <article class="concept"><span class="concept-number">03</span><h3>O Bem e o Sol</h3><p>Na alegoria, o Sol torna possível ver; por analogia, a ideia do Bem torna possível compreender e orientar o conhecimento.</p></article>
+        <article class="concept"><span class="concept-number">04</span><h3>Filosofia e cidade</h3><p>Na <em>República</em>, a educação filosófica se liga à justiça e à vida coletiva: conhecer também traz deveres públicos.</p></article>
+      </div>
+    </section>
+
+    <section class="quiz" id="perguntas" aria-labelledby="quiz-title">
+      <div class="quiz-inner">
+        <div><span class="section-label">Um instante para pensar</span><h2 id="quiz-title">E você, o que faria?</h2></div>
+        <div>
+          <p class="question">Se descobrisse que uma certeza sua era apenas uma “sombra”, qual seria seu primeiro impulso?</p>
+          <div class="answers" role="group" aria-label="Escolha sua resposta">
+            <button class="answer" type="button" data-answer="investigar" aria-pressed="false">Quero entender o que existe por trás dela.</button>
+            <button class="answer" type="button" data-answer="duvidar" aria-pressed="false">Eu precisaria de tempo para duvidar do que vi.</button>
+            <button class="answer" type="button" data-answer="compartilhar" aria-pressed="false">Voltaria para conversar com outras pessoas.</button>
+          </div>
+          <p class="quiz-result" id="quiz-result" aria-live="polite">Não há resposta certa: cada escolha abre uma pergunta diferente.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer><span>Um convite para olhar de novo.</span><span>Feito para curiosos · <a href="#inicio">Voltar ao início ↑</a></span></footer>
+
+  <script>
+    const journeySteps = [
+      {
+        title: "As sombras",
+        copy: "Os prisioneiros veem sombras e ouvem ecos desde sempre; não têm motivo para suspeitar que exista outra coisa. No cotidiano, um feed que repete os mesmos recortes pode parecer o retrato completo do mundo.",
+        caption: "01 — Gravura da alegoria, 1604",
+        image: "https://upload.wikimedia.org/wikipedia/commons/b/b1/Platon_Cave_Sanraedam_1604.jpg",
+        alt: "Gravura de 1604 mostrando prisioneiros na caverna de Platão"
+      },
+      {
+        title: "A dúvida",
+        copy: "Liberto, o prisioneiro sente dor e desconfia dos objetos que produziam as sombras. Na vida cotidiana, uma informação bem apurada pode abalar uma crença familiar; desconforto é motivo para investigar, não para aceitar ou rejeitar de imediato.",
+        caption: "02 — O primeiro desconforto",
+        image: "https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1400&q=85",
+        alt: "Luz do sol atravessando montanhas e nuvens"
+      },
+      {
+        title: "A saída",
+        copy: "A visão se adapta aos poucos: primeiro reflexos, depois as coisas e, por fim, o Sol. É uma imagem para aprender com tempo, comparar fontes e entender o contexto por trás de uma notícia ou opinião.",
+        caption: "03 — Ver com outros olhos",
+        image: "https://images.unsplash.com/photo-1470252649378-9c29740c9fa8?auto=format&fit=crop&w=1400&q=85",
+        alt: "Sol nascendo sobre uma paisagem aberta"
+      },
+      {
+        title: "O retorno",
+        copy: "Ao voltar, ele demora a enxergar no escuro e encontra resistência. Compartilhar uma descoberta também exige escuta e paciência; e quem retorna não deve confundir uma nova perspectiva com infalibilidade.",
+        caption: "04 — De volta à comunidade",
+        image: "https://images.unsplash.com/photo-1518837695005-2083093ee35b?auto=format&fit=crop&w=1400&q=85",
+        alt: "Ondas do mar encontrando a costa sob a luz do dia"
+      }
+    ];
+
+    const stepButtons = document.querySelectorAll(".step-button");
+    stepButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const index = Number(button.dataset.step);
+        const step = journeySteps[index];
+        document.querySelector("#step-count").textContent = `Momento ${String(index + 1).padStart(2, "0")} / 04`;
+        document.querySelector("#step-title").textContent = step.title;
+        document.querySelector("#step-copy").textContent = step.copy;
+        document.querySelector("#image-caption").textContent = step.caption;
+        const photo = document.querySelector("#journey-photo");
+        photo.src = step.image;
+        photo.alt = step.alt;
+        stepButtons.forEach((item) => {
+          if (item === button) item.setAttribute("aria-current", "step");
+          else item.removeAttribute("aria-current");
+        });
+      });
+    });
+
+    const responses = {
+      investigar: "Esse impulso se aproxima da jornada do prisioneiro: investigar o que sustenta aquilo que parecia óbvio.",
+      duvidar: "A hesitação faz parte da alegoria. A luz não revela tudo de uma vez; aprender também é atravessar a incerteza.",
+      compartilhar: "Esse é o gesto do retorno: levar a descoberta para o espaço comum e aceitar o desafio de dialogar."
+    };
+    document.querySelectorAll(".answer").forEach((button) => {
+      button.addEventListener("click", () => {
+        document.querySelectorAll(".answer").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+        document.querySelector("#quiz-result").textContent = responses[button.dataset.answer];
+      });
+    });
+  </script>
+</body>
+</html>
