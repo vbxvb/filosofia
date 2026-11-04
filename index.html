@@ -21,7 +21,7 @@
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <img class="hero-photo" src="https://upload.wikimedia.org/wikipedia/commons/7/71/Plato_-_Allegory_of_the_Cave.png" alt="Gravura da alegoria da caverna de Platão" fetchpriority="high">
+      <img class="hero-photo" src="https://commons.wikimedia.org/wiki/Special:FilePath/Platon_Cave_Sanraedam_1604.jpg" alt="Gravura histórica que representa a alegoria da caverna de Platão" fetchpriority="high">
       <div class="hero-shade"></div>
       <div class="hero-content">
         <p class="eyebrow">Platão · A República, Livro VII</p>
@@ -29,7 +29,7 @@
         <p class="hero-copy">O que vemos é toda a realidade? Uma das histórias mais conhecidas da filosofia nos convida a questionar as aparências e buscar conhecimento.</p>
         <a class="button-link" href="#platao">Explore a história <span aria-hidden="true">↓</span></a>
       </div>
-      <p class="hero-caption"><a href="https://commons.wikimedia.org/wiki/File:Plato_-_Allegory_of_the_Cave.png" target="_blank" rel="noreferrer">“Plato - Allegory of the Cave” · Bastianow · CC BY-SA 4.0</a></p>
+      <p class="hero-caption"><a href="https://commons.wikimedia.org/wiki/File:Platon_Cave_Sanraedam_1604.jpg" target="_blank" rel="noreferrer">Alegoria da caverna · Jan Saenredam, 1604 · Domínio público</a></p>
     </section>
 
     <section class="section intro" id="platao" aria-labelledby="platao-title">
@@ -39,8 +39,8 @@
         <p class="lead">Um pensador ateniense que marcou profundamente a filosofia ocidental.</p>
       </div>
       <figure class="photo-card portrait-card">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Busto_de_Plato_Museos_Vaticanos_2015-10-08.jpg" alt="Busto de Platão nos Museus Vaticanos" loading="lazy">
-        <figcaption>Busto de Platão, Museus Vaticanos · Foto: Marie-Lan Nguyen · <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noreferrer">CC BY 2.5</a></figcaption>
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Plato_Pio-Clementino_Inv50.jpg" alt="Busto de mármore de Platão, coleção Pio-Clementino" loading="lazy">
+        <figcaption>Busto de Platão · Foto: Marie-Lan Nguyen · <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noreferrer">CC BY 2.5</a></figcaption>
       </figure>
       <div class="body-copy">
         <p>Platão viveu em Atenas entre os séculos V e IV antes de Cristo. Foi discípulo de Sócrates e, mais tarde, mestre de Aristóteles.</p>
@@ -58,8 +58,8 @@
           <p class="lead">Imagine uma vida inteira olhando para uma parede — até que alguém consegue se virar.</p>
         </div>
         <figure class="photo-card cave-card">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/17/Plato_allegory_of_the_cave.svg" alt="Diagrama da alegoria da caverna com prisioneiros, sombras e saída para a luz" loading="lazy">
-          <figcaption>“Plato allegory of the cave” · Markus Maurer · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a></figcaption>
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Allegoryofthecave.svg" alt="Ilustração da alegoria da caverna com prisioneiros e sombras projetadas" loading="lazy">
+          <figcaption>“Allegory of the Cave” · Theresa Knott · <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank" rel="noreferrer">CC BY-SA 3.0</a></figcaption>
         </figure>
         <div class="story body-copy">
           <p>A caverna é um cenário imaginado por Platão em <em>A República</em>, Livro VII. Ela representa a condição humana de viver preso às aparências e ao que parece verdadeiro.</p>
@@ -121,23 +121,25 @@
     const advance = document.getElementById('advance');
     const reset = document.getElementById('reset');
     const totalFuel = 6;
+    const stepsToExit = 5;
     let position = 0;
     let fuel = totalFuel;
     let ended = false;
 
     function updateGame() {
-      player.style.left = `${position * 20}%`;
+      player.style.left = `${position * (100 / stepsToExit)}%`;
       meter.value = fuel;
       fuelText.textContent = `${fuel} / ${totalFuel}`;
       candle.classList.toggle('dim', fuel <= 2);
     }
 
-    advance.addEventListener('click', function () {
+    advance.addEventListener('click', () => {
       if (ended) return;
-      position++;
-      fuel--;
+      position += 1;
+      fuel -= 1;
       updateGame();
-      if (position === 5) {
+
+      if (position === stepsToExit) {
         status.textContent = 'Você saiu da caverna. A luz mostrou um mundo maior.';
         ended = true;
       } else if (fuel === 0) {
@@ -147,10 +149,11 @@
       } else {
         status.textContent = `Você avançou ${position} passo(s). Ainda há caminho pela frente.`;
       }
+
       if (ended) advance.disabled = true;
     });
 
-    reset.addEventListener('click', function () {
+    reset.addEventListener('click', () => {
       position = 0;
       fuel = totalFuel;
       ended = false;
@@ -160,12 +163,11 @@
       updateGame();
     });
 
-    document.addEventListener('keydown', function (event) {
-      if (!ended && (event.key === 'ArrowRight' || event.code === 'Space')) {
-        if (event.target instanceof HTMLElement && ['BUTTON', 'A', 'INPUT'].includes(event.target.tagName)) return;
-        event.preventDefault();
-        advance.click();
-      }
+    document.addEventListener('keydown', (event) => {
+      if (ended || (event.key !== 'ArrowRight' && event.code !== 'Space')) return;
+      if (event.target instanceof HTMLElement && ['BUTTON', 'A', 'INPUT'].includes(event.target.tagName)) return;
+      event.preventDefault();
+      advance.click();
     });
 
     updateGame();
