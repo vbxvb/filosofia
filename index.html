@@ -3,141 +3,57 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2b1b16">
-  <meta name="description" content="Uma experiência simples sobre Platão, a caverna e a busca pela luz.">
-  <title>Além das sombras</title>
+  <meta name="theme-color" content="#171713">
+  <meta name="description" content="Uma viagem filosófica pela Alegoria da Caverna, de Platão: das sombras à descoberta do conhecimento.">
+  <title>Além da Caverna — Uma viagem com Platão</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header class="topbar" id="inicio">
-    <a class="brand" href="#inicio"><span>φ</span> Caderno</a>
-    <nav aria-label="Menu principal">
-      <a href="#platao">Platão</a>
-      <a href="#alegoria">Alegoria</a>
-      <a href="#jogo">Jogo</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Além da Caverna — início"><span class="brand-mark">φ</span><span>Além da <b>Caverna</b></span></a>
+    <nav class="main-nav" aria-label="Navegação principal">
+      <a class="active" href="index.html">Início</a><a href="alegoria.html">A alegoria</a><a href="reflexoes.html">Reflexões & vídeo</a>
     </nav>
+    <a class="header-cta" href="alegoria.html">Iniciar jornada <span aria-hidden="true">↗</span></a>
   </header>
-
   <main>
     <section class="hero">
-      <p class="eyebrow">Platão · Livro VII</p>
-      <h1>Além das<br><em>sombras.</em></h1>
-      <p class="hero-copy">O que parece real pode ser apenas o que vemos na parede. A filosofia começa quando questionamos o que está diante de nós.</p>
-      <a class="button-link" href="#platao">Começar ↓</a>
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> FILOSOFIA · PLATÃO · LIVRO VII</p>
+        <h1>E se tudo<br>que você vê<br>for <em>uma sombra?</em></h1>
+        <p class="hero-intro">Uma jornada para fora da caverna — e para dentro das perguntas que mudam a forma de olhar o mundo.</p>
+        <a class="round-link" href="alegoria.html"><span class="round-icon">↓</span> Descubra a alegoria</a>
+        <div class="hero-note"><span class="note-star">✳</span><span>Uma ideia de Platão<br>que continua iluminando o presente.</span></div>
+      </div>
+      <div class="hero-art" role="img" aria-label="Uma passagem rochosa escura se abre para uma paisagem iluminada pelo sol">
+        <div class="art-glow"></div><div class="art-sun"></div><div class="art-ridge ridge-back"></div><div class="art-ridge ridge-front"></div>
+        <span class="art-caption">DA ESCURIDÃO À DESCOBERTA <span>01 — 03</span></span>
+        <span class="art-orbit orbit-one"></span><span class="art-orbit orbit-two"></span>
+      </div>
+      <div class="hero-index">01 <span>/</span> 03</div>
     </section>
 
-    <section class="section intro" id="platao">
-      <div>
-        <p class="eyebrow">01 / O filósofo</p>
-        <h2>Quem foi<br>Platão?</h2>
-      </div>
-      <div class="body-copy">
-        <p>Platão foi um filósofo grego, discípulo de Sócrates e mestre de Aristóteles. Em seus diálogos, ele discutiu educação, conhecimento, política e justiça.</p>
-        <p>Na <em>República</em>, ele descreve uma alegoria sobre pessoas presas dentro de uma caverna, olhando apenas para sombras.</p>
-        <blockquote>“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, A República</cite></blockquote>
-      </div>
-    </section>
-
-    <section class="section allegory" id="alegoria">
-      <p class="eyebrow">02 / A alegoria</p>
-      <h2>Uma caverna, uma fogueira e o caminho para a luz.</h2>
-      <div class="columns body-copy">
-        <p>Imaginem pessoas presas desde a infância, encarando só a parede. Elas acreditam que as sombras são a realidade inteira, porque nunca viram outra coisa.</p>
-        <p>Quando uma delas é libertada, a dor da luz é grande. Mas aos poucos ela entende que o mundo fora da caverna é muito maior do que imaginava. Essa é a imagem da busca por conhecimento.</p>
+    <section class="intro-section section-wrap">
+      <div class="section-label">01 <span>—</span> O ponto de partida</div>
+      <div class="intro-grid">
+        <h2>Uma história antiga.<br><em>Uma pergunta urgente.</em></h2>
+        <div class="prose"><p>Imagine passar a vida inteira olhando para uma parede. Para quem nunca viu outra coisa, as sombras projetadas nela parecem ser o próprio mundo. Mas e se houver muito mais para conhecer?</p><p>Na <i>República</i>, escrita há mais de dois mil anos, Platão usa essa imagem para falar sobre conhecimento, educação e a coragem de questionar aquilo que tomamos como verdade.</p><a class="text-link" href="alegoria.html">Conheça a história <span>→</span></a></div>
       </div>
     </section>
 
-    <section class="game-section" id="jogo">
-      <div class="game-heading">
-        <p class="eyebrow">03 / Experimente</p>
-        <h2>Encontre a saída</h2>
-        <p>Avance pela caverna com a sua vela. A luz é limitada e a saída está ao final do caminho.</p>
-      </div>
-
-      <div class="game">
-        <div class="cave-scene" aria-label="Caverna com caminho até a saída">
-          <span class="cave-opening" aria-hidden="true">☀️</span>
-          <span class="cave-exit" aria-hidden="true">🚪</span>
-          <span id="player" class="cave-player" aria-hidden="true">🧍</span>
-          <span id="candle" class="candle" aria-hidden="true">🕯️</span>
-          <div class="path" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-        </div>
-        <div class="game-info">
-          <p id="status" class="game-status" aria-live="polite">Você está na entrada. A saída está a 5 passos.</p>
-          <div class="game-meter">
-            <span>Luz</span>
-            <progress id="meter" max="6" value="6"></progress>
-            <span id="fuel">6 / 6</span>
-          </div>
-          <div class="game-controls">
-            <button id="advance" class="button" type="button">Avançar</button>
-            <button id="reset" class="button button-secondary" type="button">Recomeçar</button>
-          </div>
-          <p class="hint">Use a tecla → ou a barra de espaço para avançar.</p>
-        </div>
-      </div>
+    <section class="image-strip" aria-label="Imagens que representam a jornada da caverna">
+      <figure><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85" alt="Montanhas escuras sob um céu estrelado, evocando a vastidão do desconhecido"><figcaption><span>01</span> O desconhecido</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=900&q=85" alt="Lago tranquilo e montanhas ao nascer do sol"><figcaption><span>02</span> O despertar</figcaption></figure>
+      <figure><img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85" alt="Trilha aberta atravessando uma paisagem montanhosa iluminada"><figcaption><span>03</span> O caminho</figcaption></figure>
     </section>
+
+    <section class="quote-band"><span class="quote-mark">“</span><blockquote>A educação é a arte de voltar o olhar da alma para a luz.</blockquote><p>Uma leitura da Alegoria da Caverna · Platão, <i>A República</i>, Livro VII</p></section>
+
+    <section class="next-section section-wrap"><div><p class="eyebrow">A JORNADA CONTINUA</p><h2>Pronto para<br>olhar de novo?</h2></div><a class="big-arrow-link" href="alegoria.html">Entre na caverna <span>↗</span></a></section>
   </main>
-
-  <footer><span>Um convite para olhar de novo.</span><a href="#inicio">Voltar ao início ↑</a></footer>
-
-  <script>
-    const player = document.getElementById('player');
-    const candle = document.getElementById('candle');
-    const meter = document.getElementById('meter');
-    const fuelText = document.getElementById('fuel');
-    const status = document.getElementById('status');
-    const advance = document.getElementById('advance');
-    const reset = document.getElementById('reset');
-    const totalFuel = 6;
-    let position = 0;
-    let fuel = totalFuel;
-    let ended = false;
-
-    function updateGame() {
-      player.style.left = `${position * 20}%`;
-      meter.value = fuel;
-      fuelText.textContent = `${fuel} / ${totalFuel}`;
-      candle.classList.toggle('dim', fuel <= 2);
-    }
-
-    advance.addEventListener('click', function () {
-      if (ended) return;
-      position++;
-      fuel--;
-      updateGame();
-
-      if (position === 5) {
-        status.textContent = 'Você saiu da caverna. A luz mostrou o caminho.';
-        ended = true;
-      } else if (fuel === 0) {
-        status.textContent = 'A vela apagou antes da saída. Tente de novo.';
-        candle.textContent = '🌑';
-        ended = true;
-      } else {
-        status.textContent = `Você avançou ${position} passo(s). Ainda há caminho pela frente.`;
-      }
-      if (ended) advance.disabled = true;
-    });
-
-    reset.addEventListener('click', function () {
-      position = 0;
-      fuel = totalFuel;
-      ended = false;
-      candle.textContent = '🕯️';
-      advance.disabled = false;
-      status.textContent = 'Você está na entrada. A saída está a 5 passos.';
-      updateGame();
-    });
-
-    document.addEventListener('keydown', function (event) {
-      if (!ended && (event.key === 'ArrowRight' || event.code === 'Space')) {
-        event.preventDefault();
-        advance.click();
-      }
-    });
-
-    updateGame();
-  </script>
+  <footer class="site-footer"><a class="brand" href="index.html"><span class="brand-mark">φ</span><span>Além da <b>Caverna</b></span></a><p>Projeto interdisciplinar · Filosofia, Web Design & Multimídia</p><a href="#top">Voltar ao início ↑</a></footer>
 </body>
 </html>
