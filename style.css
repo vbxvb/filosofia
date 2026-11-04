@@ -33,15 +33,25 @@ h2 { margin: 15px 0 25px; font-size: clamp(36px, 5vw, 58px); line-height: 1.08; 
 .body-copy p { margin: 0 0 18px; }
 blockquote { margin: 30px 0 0; padding-left: 18px; border-left: 2px solid var(--accent); color: var(--text); font: 20px/1.6 Georgia, serif; }
 blockquote cite { display: block; margin-top: 10px; color: var(--muted); font: 10px Arial, sans-serif; text-transform: uppercase; }
+.image-card { margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
+.image-card img { display: block; width: 100%; height: 250px; object-fit: cover; filter: sepia(.24) saturate(.8); }
+.image-card figcaption { padding: 11px 14px; color: var(--muted); font: 11px/1.5 Arial, sans-serif; }
+.intro-content { display: grid; gap: 24px; }
+.portrait-card img { height: 280px; object-position: center 38%; }
 .allegory { background: #42291f; }
 .allegory h2 { max-width: 760px; }
-.columns { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+.allegory-layout { display: grid; grid-template-columns: 1.1fr .9fr; gap: 42px; align-items: start; }
+.cave-card img { height: 390px; }
+.reflection { max-width: 600px; margin-top: 34px; padding: 18px 22px; border-left: 2px solid var(--accent); background: rgb(0 0 0 / 12%); color: var(--muted); font: 14px/1.7 Arial, sans-serif; }
+.reflection strong { color: var(--accent); font: 11px monospace; letter-spacing: .08em; text-transform: uppercase; }
+.reflection p { margin: 8px 0 0; }
 .game-section { padding: 90px 10vw 100px; background: #f0dfc8; color: #2b1b16; }
 .game-heading { max-width: 650px; margin: 0 auto 38px; text-align: center; }
 .game-heading .eyebrow { color: #a64f30; }
 .game-heading > p:last-child { color: #654b3e; font: 14px/1.7 Arial, sans-serif; }
 .game { max-width: 900px; margin: auto; border: 1px solid #d2b79a; background: #e6ceb1; }
-.cave-scene { position: relative; height: 300px; overflow: hidden; background: radial-gradient(ellipse at 15% 50%, #f5b765 0, #8b4e2c 12%, #43271e 42%, #241815 100%); }
+.cave-scene { position: relative; height: 300px; overflow: hidden; cursor: pointer; background: radial-gradient(ellipse at 15% 50%, #f5b765 0, #8b4e2c 12%, #43271e 42%, #241815 100%); }
+.cave-scene:focus-visible { outline: 3px solid #873f29; outline-offset: -5px; }
 .cave-scene::before { position: absolute; inset: 0; content: ""; background: linear-gradient(180deg, #211512 0 14%, transparent 14% 82%, #211512 82%); clip-path: polygon(0 0,100% 0,100% 100%,0 100%); }
 .cave-opening { position: absolute; top: 42%; left: 3%; font-size: 32px; }
 .cave-exit { position: absolute; top: 40%; right: 3%; font-size: 32px; }
@@ -70,7 +80,8 @@ footer a { color: var(--accent); }
   .brand { font-size: 10px; }
   .hero { min-height: 500px; padding: 100px 8vw 70px; }
   .section, .game-section { padding: 68px 8vw; }
-  .intro, .columns { grid-template-columns: 1fr; gap: 25px; }
+  .intro, .allegory-layout { grid-template-columns: 1fr; gap: 25px; }
+  .cave-card img { height: 260px; }
   .game-info { padding: 20px 16px; }
   .cave-scene { height: 240px; }
   footer { flex-direction: column; gap: 10px; padding: 20px 8vw; }

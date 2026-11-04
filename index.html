@@ -31,20 +31,36 @@
         <p class="eyebrow">01 / O filósofo</p>
         <h2>Quem foi<br>Platão?</h2>
       </div>
-      <div class="body-copy">
-        <p>Platão foi um filósofo grego, discípulo de Sócrates e mestre de Aristóteles. Em seus diálogos, ele discutiu educação, conhecimento, política e justiça.</p>
-        <p>Na <em>República</em>, ele descreve uma alegoria sobre pessoas presas dentro de uma caverna, olhando apenas para sombras.</p>
-        <blockquote>“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, A República</cite></blockquote>
+      <div class="intro-content">
+        <figure class="image-card portrait-card">
+          <img src="https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?auto=format&fit=crop&w=1000&q=80" alt="Escultura clássica em mármore, evocando a filosofia da Grécia antiga" loading="lazy">
+          <figcaption>Uma representação da tradição filosófica grega</figcaption>
+        </figure>
+        <div class="body-copy">
+          <p>Platão foi um filósofo grego que viveu entre os séculos V e IV a.C. Foi discípulo de Sócrates e, mais tarde, mestre de Aristóteles. Em Atenas, fundou a Academia, uma escola dedicada ao estudo e à investigação.</p>
+          <p>Ele escreveu diálogos filosóficos — conversas em que personagens investigam questões como justiça, política, amor, educação e conhecimento. Sócrates aparece como interlocutor em muitos deles.</p>
+          <p>Uma de suas ideias importantes distingue aquilo que percebemos pelos sentidos do conhecimento alcançado pela razão. Para Platão, pensar filosoficamente é investigar se as aparências contam toda a verdade.</p>
+          <blockquote>“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, A República, Livro VII</cite></blockquote>
+        </div>
       </div>
     </section>
 
     <section class="section allegory" id="alegoria">
       <p class="eyebrow">02 / A alegoria</p>
       <h2>Uma caverna, uma fogueira e o caminho para a luz.</h2>
-      <div class="columns body-copy">
-        <p>Imaginem pessoas presas desde a infância, encarando só a parede. Elas acreditam que as sombras são a realidade inteira, porque nunca viram outra coisa.</p>
-        <p>Quando uma delas é libertada, a dor da luz é grande. Mas aos poucos ela entende que o mundo fora da caverna é muito maior do que imaginava. Essa é a imagem da busca por conhecimento.</p>
+      <div class="allegory-layout">
+        <div class="body-copy">
+          <p>No Livro VII de <em>A República</em>, Platão pede que imaginemos pessoas acorrentadas desde a infância dentro de uma caverna. Sem poder olhar para trás, elas veem sombras projetadas na parede por uma fogueira e acreditam que aquelas imagens são o mundo inteiro.</p>
+          <p>Um dia, uma pessoa é libertada. Primeiro, a luz da fogueira e a visão do caminho causam desconforto. Depois, ao sair da caverna, a claridade do sol também a ofusca. Aos poucos, ela consegue enxergar melhor e percebe que a realidade era muito maior do que imaginava.</p>
+          <p>Na alegoria, as sombras representam o conhecimento limitado pelas aparências. A saída simboliza o percurso difícil da aprendizagem e da filosofia. O sol representa a compreensão mais ampla da verdade e do bem.</p>
+          <p>Ao voltar para contar o que descobriu, a pessoa pode não ser acreditada: quem nunca saiu da caverna conhece apenas as sombras. A história nos convida a questionar nossas certezas e a escutar ideias diferentes.</p>
+        </div>
+        <figure class="image-card cave-card">
+          <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1200&q=80" alt="Paisagem rochosa iluminada, evocando o caminho para fora da caverna" loading="lazy">
+          <figcaption>A saída da caverna como imagem da descoberta</figcaption>
+        </figure>
       </div>
+      <aside class="reflection"><strong>Para pensar</strong><p>Que “sombras” podem influenciar a maneira como entendemos o mundo hoje?</p></aside>
     </section>
 
     <section class="game-section" id="jogo">
@@ -55,7 +71,7 @@
       </div>
 
       <div class="game">
-        <div class="cave-scene" aria-label="Caverna com caminho até a saída">
+        <div class="cave-scene" id="caveScene" aria-label="Caverna com caminho até a saída. Clique para avançar." role="button" tabindex="0">
           <span class="cave-opening" aria-hidden="true">☀️</span>
           <span class="cave-exit" aria-hidden="true">🚪</span>
           <span id="player" class="cave-player" aria-hidden="true">🧍</span>
@@ -73,7 +89,7 @@
             <button id="advance" class="button" type="button">Avançar</button>
             <button id="reset" class="button button-secondary" type="button">Recomeçar</button>
           </div>
-          <p class="hint">Use a tecla → ou a barra de espaço para avançar.</p>
+          <p class="hint">Clique na cena ou em “Avançar”. Também funciona com → e espaço.</p>
         </div>
       </div>
     </section>
@@ -89,6 +105,7 @@
     const status = document.getElementById('status');
     const advance = document.getElementById('advance');
     const reset = document.getElementById('reset');
+    const caveScene = document.getElementById('caveScene');
     const totalFuel = 6;
     let position = 0;
     let fuel = totalFuel;
@@ -101,7 +118,7 @@
       candle.classList.toggle('dim', fuel <= 2);
     }
 
-    advance.addEventListener('click', function () {
+    function advanceGame() {
       if (ended) return;
       position++;
       fuel--;
@@ -117,7 +134,16 @@
       } else {
         status.textContent = `Você avançou ${position} passo(s). Ainda há caminho pela frente.`;
       }
-      if (ended) advance.disabled = true;
+      advance.disabled = ended;
+    }
+
+    advance.addEventListener('click', advanceGame);
+    caveScene.addEventListener('click', advanceGame);
+    caveScene.addEventListener('keydown', function (event) {
+      if (event.key === 'Enter' || event.code === 'Space') {
+        event.preventDefault();
+        advanceGame();
+      }
     });
 
     reset.addEventListener('click', function () {
@@ -133,7 +159,7 @@
     document.addEventListener('keydown', function (event) {
       if (!ended && (event.key === 'ArrowRight' || event.code === 'Space')) {
         event.preventDefault();
-        advance.click();
+        advanceGame();
       }
     });
 
