@@ -3,86 +3,90 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#2b1b16">
-  <meta name="description" content="Uma experiência sobre Platão, a alegoria da caverna e a busca pelo conhecimento.">
-  <title>Além das sombras</title>
+  <meta name="theme-color" content="#17221e">
+  <meta name="description" content="Conheça Platão e explore a alegoria da caverna com fotos, contexto e uma pequena experiência interativa.">
+  <title>Platão e a alegoria da caverna</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="topbar" id="inicio">
-    <a class="brand" href="#inicio"><span>φ</span> Caderno</a>
+    <a class="brand" href="#inicio" aria-label="Platão — início"><span aria-hidden="true">φ</span> FILOSOFIA EM FOCO</a>
     <nav aria-label="Menu principal">
       <a href="#platao">Platão</a>
-      <a href="#alegoria">Alegoria</a>
+      <a href="#alegoria">A caverna</a>
       <a href="#significado">Significado</a>
-      <a href="#jogo">Jogo</a>
+      <a href="#jogo">Experiência</a>
     </nav>
   </header>
 
   <main>
-    <section class="hero">
+    <section class="hero" aria-labelledby="hero-title">
+      <img class="hero-photo" src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Postojnska_cave_3.jpg" alt="Interior amplo e rochoso da Caverna de Postojna" fetchpriority="high">
+      <div class="hero-shade"></div>
       <div class="hero-content">
-        <p class="eyebrow">Platão · Livro VII</p>
-        <h1>Além das<br><em>sombras.</em></h1>
-        <p class="hero-copy">O que parece real pode ser apenas aquilo que conseguimos ver. A filosofia começa quando temos coragem de questionar as sombras.</p>
-        <a class="button-link" href="#platao">Começar a jornada ↓</a>
+        <p class="eyebrow">Platão · A República, Livro VII</p>
+        <h1 id="hero-title">A alegoria<br>da <em>caverna</em></h1>
+        <p class="hero-copy">O que vemos é toda a realidade? Uma das histórias mais conhecidas da filosofia nos convida a questionar as aparências e buscar conhecimento.</p>
+        <a class="button-link" href="#platao">Explore a história <span aria-hidden="true">↓</span></a>
       </div>
-      <span class="hero-mark" aria-hidden="true">φ</span>
+      <p class="hero-caption">Caverna de Postojna · Foto: Tomaž Demšar · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></p>
     </section>
 
-    <section class="section intro" id="platao">
-      <figure class="portrait-card">
+    <section class="section intro" id="platao" aria-labelledby="platao-title">
+      <div class="section-heading">
+        <p class="eyebrow">01 — O filósofo</p>
+        <h2 id="platao-title">Quem foi<br><em>Platão?</em></h2>
+        <p class="lead">Um pensador ateniense que marcou profundamente a filosofia ocidental.</p>
+      </div>
+      <figure class="photo-card portrait-card">
         <img src="https://upload.wikimedia.org/wikipedia/commons/2/2b/Busto_de_Plato_Museos_Vaticanos_2015-10-08.jpg" alt="Busto de Platão nos Museus Vaticanos" loading="lazy">
-        <figcaption>Platão · Foto: Marie-Lan Nguyen · <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noreferrer">CC BY 2.5</a></figcaption>
+        <figcaption>Busto de Platão, Museus Vaticanos · Foto: Marie-Lan Nguyen · <a href="https://creativecommons.org/licenses/by/2.5/" target="_blank" rel="noreferrer">CC BY 2.5</a></figcaption>
       </figure>
       <div class="body-copy">
-        <p class="eyebrow">01 / O filósofo</p>
-        <h2>Quem foi<br>Platão?</h2>
-        <p>Platão foi um filósofo grego que viveu entre os séculos V e IV antes de Cristo. Discípulo de Sócrates e, mais tarde, mestre de Aristóteles, tornou-se uma das figuras mais influentes da história da filosofia.</p>
-        <p>Por meio de diálogos — textos em forma de conversa —, investigou temas como justiça, política, educação, beleza e conhecimento. Em Atenas, fundou a Academia, uma escola dedicada ao estudo e à discussão filosófica.</p>
-        <p>Na <em>República</em>, Platão apresenta a alegoria da caverna: uma história que nos convida a pensar sobre a diferença entre aparência e realidade e sobre o esforço necessário para aprender.</p>
-        <blockquote>“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, A República · Livro VII</cite></blockquote>
+        <p>Platão viveu em Atenas entre os séculos V e IV antes de Cristo. Foi discípulo de Sócrates e, mais tarde, mestre de Aristóteles.</p>
+        <p>Escreveu diálogos — textos em forma de conversa — para investigar questões como justiça, política, educação, beleza e conhecimento. Também fundou a Academia, uma escola dedicada à reflexão e ao estudo.</p>
+        <p>Na obra <em>A República</em>, apresenta a alegoria da caverna: uma narrativa sobre a diferença entre aquilo que parece real e aquilo que podemos compreender.</p>
+        <blockquote>“A educação não é o que alguns proclamam que ela é: pôr conhecimento na alma.”<cite>Platão, <em>A República</em>, Livro VII</cite></blockquote>
       </div>
     </section>
 
-    <section class="section allegory" id="alegoria">
-      <div class="allegory-header">
-        <p class="eyebrow">02 / A alegoria</p>
-        <h2>Uma caverna, uma fogueira e o caminho para a luz.</h2>
-        <p class="section-lead">Uma história sobre os limites do que conhecemos — e sobre a possibilidade de enxergar de outro jeito.</p>
-      </div>
-      <div class="allegory-layout">
-        <figure class="image-panel">
+    <section class="allegory" id="alegoria" aria-labelledby="alegoria-title">
+      <div class="section allegory-inner">
+        <div class="allegory-heading">
+          <p class="eyebrow">02 — A história</p>
+          <h2 id="alegoria-title">Da escuridão<br>para a <em>luz</em></h2>
+          <p class="lead">Imagine uma vida inteira olhando para uma parede — até que alguém consegue se virar.</p>
+        </div>
+        <figure class="photo-card cave-card">
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Postojnska_cave_3.jpg" alt="Formações rochosas no interior da Caverna de Postojna" loading="lazy">
-          <figcaption>Caverna de Postojna · Foto: Tomaž Demšar · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></figcaption>
+          <figcaption>Uma caverna real como inspiração visual · Foto: Tomaž Demšar · <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noreferrer">CC BY-SA 4.0</a></figcaption>
         </figure>
-        <div class="body-copy allegory-copy">
-          <p>Imagine pessoas que vivem acorrentadas desde a infância no interior de uma caverna. Sem poder virar a cabeça, elas observam apenas uma parede. Atrás delas há uma fogueira, e entre o fogo e os prisioneiros passam objetos que projetam sombras.</p>
-          <p>Como nunca viram outra coisa, os prisioneiros tomam aquelas sombras por toda a realidade. Os sons também parecem vir das imagens projetadas. Para eles, o mundo é exatamente aquilo que conseguem observar dali.</p>
-          <p>Um dia, uma pessoa é libertada. No começo, mover-se e olhar para o fogo causa desconforto; a luz ofusca seus olhos. Aos poucos, ela se acostuma, percebe os objetos que produziam as sombras e, finalmente, encontra a saída da caverna.</p>
-          <p>À luz do sol, descobre um mundo muito mais amplo. A mudança não acontece de uma vez: aprender exige tempo, curiosidade e disposição para rever certezas.</p>
+        <div class="story body-copy">
+          <p><span class="story-number">01</span>Prisioneiros vivem acorrentados desde a infância. Sem poder virar a cabeça, veem apenas sombras projetadas na parede por uma fogueira atrás deles.</p>
+          <p><span class="story-number">02</span>Como nunca conheceram outra coisa, acreditam que aquelas sombras são a realidade inteira. Para eles, não existe um mundo além da parede.</p>
+          <p><span class="story-number">03</span>Um prisioneiro é libertado. A princípio, a luz incomoda e o caminho é difícil. Aos poucos, ele percebe os objetos que criavam as sombras e, ao sair, descobre o mundo iluminado pelo sol.</p>
+          <p><span class="story-number">04</span>Depois de se acostumar à luz, ele retorna para contar aos outros o que viu — mas eles podem não acreditar nele.</p>
         </div>
       </div>
     </section>
 
-    <section class="section meaning" id="significado">
+    <section class="section meaning" id="significado" aria-labelledby="meaning-title">
       <div>
-        <p class="eyebrow">03 / O que a história nos pergunta</p>
-        <h2>Ver não é o mesmo que compreender.</h2>
+        <p class="eyebrow">03 — O que a história nos pergunta</p>
+        <h2 id="meaning-title">Ver não é o mesmo que <em>compreender.</em></h2>
       </div>
       <div class="body-copy">
-        <p>Na alegoria, as sombras representam aquilo que aceitamos sem examinar. A saída da caverna simboliza um percurso de aprendizagem: questionar, comparar ideias e buscar razões para aquilo em que acreditamos.</p>
-        <p>A luz do sol costuma ser interpretada como imagem do conhecimento e da verdade. Mas a história também chama atenção para a dificuldade de mudar: quem se acostumou à escuridão pode sentir medo ou rejeitar uma nova perspectiva.</p>
-        <p>Platão ainda imagina o retorno da pessoa libertada à caverna. Ela tenta contar aos outros o que descobriu, mas pode não ser compreendida. A cena levanta uma questão sobre educação: como ajudar alguém a aprender sem simplesmente impor respostas?</p>
-        <div class="reflection"><span aria-hidden="true">“</span><p>Que ideias você considera verdadeiras porque já as examinou — e quais talvez sejam apenas sombras familiares?</p></div>
+        <p>As sombras representam aquilo que aceitamos sem examinar. A saída da caverna simboliza aprender: questionar, comparar ideias e procurar razões.</p>
+        <p>A luz costuma representar o conhecimento. Mas Platão também mostra que mudar de perspectiva pode ser desconfortável — e que quem volta com novas ideias nem sempre é compreendido.</p>
+        <aside class="reflection"><span aria-hidden="true">“</span><p>Que ideias você já examinou por conta própria — e quais talvez sejam apenas sombras familiares?</p></aside>
       </div>
     </section>
 
-    <section class="game-section" id="jogo">
+    <section class="game-section" id="jogo" aria-labelledby="game-title">
       <div class="game-heading">
-        <p class="eyebrow">04 / Experimente</p>
-        <h2>Encontre a saída</h2>
-        <p>Avance pela caverna com a sua vela. A luz é limitada e a saída está ao final do caminho.</p>
+        <p class="eyebrow">04 — Experimente</p>
+        <h2 id="game-title">Encontre a saída</h2>
+        <p>Avance pela caverna com sua vela. Você tem luz suficiente para chegar até a saída.</p>
       </div>
       <div class="game">
         <div class="cave-scene" role="img" aria-label="Ilustração de uma caverna com caminho até a saída">
@@ -94,16 +98,12 @@
         </div>
         <div class="game-info">
           <p id="status" class="game-status" aria-live="polite">Você está na entrada. A saída está a 5 passos.</p>
-          <div class="game-meter">
-            <span>Luz</span>
-            <progress id="meter" max="6" value="6" aria-label="Luz restante"></progress>
-            <span id="fuel">6 / 6</span>
-          </div>
+          <div class="game-meter"><span>Luz</span><progress id="meter" max="6" value="6" aria-label="Luz restante"></progress><span id="fuel">6 / 6</span></div>
           <div class="game-controls">
             <button id="advance" class="button" type="button">Avançar</button>
             <button id="reset" class="button button-secondary" type="button">Recomeçar</button>
           </div>
-          <p class="hint">Use a tecla → ou a barra de espaço para avançar.</p>
+          <p class="hint">Use o botão, a tecla → ou a barra de espaço para avançar.</p>
         </div>
       </div>
     </section>
@@ -136,7 +136,6 @@
       position++;
       fuel--;
       updateGame();
-
       if (position === 5) {
         status.textContent = 'Você saiu da caverna. A luz mostrou um mundo maior.';
         ended = true;
