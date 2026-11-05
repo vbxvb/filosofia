@@ -836,3 +836,303 @@ tbody tr:hover {
     transition-duration: .01ms !important;
   }
 }
+
+/* =========================================
+   NOVO VISUAL - PÁGINA DA ALEGORIA
+========================================= */
+
+/* ABERTURA */
+
+.allegory-hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.page-hero-content {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero-art {
+  border: 1px solid rgba(215,173,114,.2);
+  box-shadow: 0 25px 80px rgba(0,0,0,.35);
+}
+
+.page-hero-art img {
+  transition: transform 1s ease;
+}
+
+.page-hero-art:hover img {
+  transform: scale(1.06);
+}
+
+.hero-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(23,23,19,.4),
+    transparent 70%,
+    rgba(23,23,19,.2)
+  );
+}
+
+.hero-side-text {
+  position: absolute;
+  bottom: 35px;
+  right: 7vw;
+  writing-mode: vertical-rl;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 3px;
+}
+
+/* INTRODUÇÃO DA HISTÓRIA */
+
+.story-mini-label {
+  display: inline-block;
+  margin-bottom: 23px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.story-intro h2 {
+  margin-bottom: 27px;
+}
+
+.story-intro .prose {
+  margin-bottom: 15px;
+}
+
+.story-quote {
+  margin-top: 35px;
+  padding: 20px 22px;
+  border-left: 2px solid var(--gold);
+  background: rgba(215,173,114,.06);
+}
+
+.story-quote span {
+  color: var(--gold);
+  font-family: var(--serif);
+  font-size: 35px;
+}
+
+.story-quote p {
+  color: var(--paper-dim);
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.6;
+}
+
+/* ETAPAS DA HISTÓRIA */
+
+.story-steps {
+  position: relative;
+}
+
+.story-steps::before {
+  content: "";
+  position: absolute;
+  left: 17px;
+  top: 20px;
+  bottom: 20px;
+  width: 1px;
+  background: linear-gradient(
+    var(--gold),
+    rgba(215,173,114,.08)
+  );
+}
+
+.story-step {
+  position: relative;
+  align-items: start;
+  padding: 30px 0;
+  transition: .35s ease;
+}
+
+.step-number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 35px;
+  height: 35px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--gold-bright);
+}
+
+.step-content {
+  min-width: 0;
+}
+
+.step-image {
+  height: 165px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: var(--ink-soft);
+}
+
+.step-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.72) saturate(.7);
+  transition: transform .7s ease, filter .7s ease;
+}
+
+.story-step:hover .step-image img {
+  transform: scale(1.06);
+  filter: brightness(.95) saturate(.9);
+}
+
+.step-tag {
+  color: var(--gold);
+  font-size: 8px;
+  letter-spacing: 2px;
+}
+
+.step-content h3 {
+  margin: 12px 0;
+  font-size: 25px;
+  font-family: var(--serif);
+  font-weight: 500;
+}
+
+.step-content p {
+  max-width: 480px;
+  color: #aaa99e;
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* SIGNIFICADO DOS SÍMBOLOS */
+
+.meaning-section h2 {
+  margin-top: 35px;
+}
+
+.meaning-intro {
+  max-width: 460px;
+  margin-bottom: 40px;
+  color: #777166;
+  font-size: 13px;
+  line-height: 1.9;
+}
+
+.meaning-section table {
+  box-shadow: 0 15px 40px rgba(0,0,0,.04);
+}
+
+.meaning-section tbody tr:hover {
+  background: rgba(155,115,68,.09);
+}
+
+.meaning-section tbody th {
+  border-left: 2px solid transparent;
+  transition: border-color .3s;
+}
+
+.meaning-section tbody tr:hover th {
+  border-left-color: #9b7344;
+}
+
+/* PERGUNTA FINAL */
+
+.question-band {
+  position: relative;
+  overflow: hidden;
+}
+
+.question-decoration {
+  position: absolute;
+  right: 8%;
+  top: 10%;
+  font-family: var(--serif);
+  font-size: 220px;
+  color: rgba(215,173,114,.045);
+  pointer-events: none;
+}
+
+.question-band > *:not(.question-decoration) {
+  position: relative;
+  z-index: 1;
+}
+
+.question-description {
+  max-width: 500px;
+  margin: 20px auto 0;
+  color: var(--paper-dim);
+  font-size: 12px;
+  line-height: 1.9;
+}
+
+/* ENTRADA DOS ELEMENTOS */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .8s ease, transform .8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CELULAR */
+
+@media (max-width: 620px) {
+
+  .page-hero-content {
+    width: 100%;
+  }
+
+  .page-hero-art {
+    position: relative;
+    top: auto;
+    right: auto;
+    width: 100%;
+    height: 230px;
+    margin-top: 35px;
+    opacity: 1;
+    clip-path: none;
+  }
+
+  .page-hero-art img {
+    object-fit: cover;
+  }
+
+  .hero-side-text {
+    display: none;
+  }
+
+  .story-steps::before {
+    left: 15px;
+  }
+
+  .story-step {
+    grid-template-columns: 40px 1fr;
+    gap: 10px;
+  }
+
+  .step-image {
+    height: 145px;
+  }
+
+  .question-decoration {
+    font-size: 130px;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
