@@ -5,15 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#171713">
 
-  <meta name="description" content="Além da Caverna — Uma viagem filosófica pela Alegoria da Caverna, de Platão.">
+  <meta name="description" content="Além da Caverna — Uma viagem filosófica pela Alegoria da Caverna, de Platão. Projeto de Filosofia em HTML e CSS.">
 
   <title>Além da Caverna — Uma viagem com Platão</title>
 
+  <!-- Google Fonts: Playfair Display & DM Sans -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
 
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&display=swap" rel="stylesheet">
-
+  <!-- Folha de estilo externa -->
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -22,13 +23,13 @@
   <!-- CABEÇALHO -->
   <header class="site-header">
 
-    <a class="brand" href="index.html">
+    <a class="brand" href="index.html" aria-label="Além da Caverna - Página Inicial">
       <span class="brand-mark">φ</span>
       <span>Além da <b>Caverna</b></span>
     </a>
 
     <nav class="main-nav" aria-label="Navegação principal">
-      <a class="active" href="index.html">Início</a>
+      <a class="active" href="index.html" aria-current="page">Início</a>
       <a href="alegoria.html">A alegoria</a>
       <a href="reflexoes.html">Reflexões &amp; vídeo</a>
     </nav>
@@ -60,7 +61,7 @@
 
         <p class="hero-intro">
           Uma jornada para fora da caverna — e para dentro
-          das perguntas que mudam a forma de olhar o mundo.
+          das perguntas que transformam a maneira como olhamos o mundo.
         </p>
 
         <a class="round-link" href="alegoria.html">
@@ -71,15 +72,15 @@
         <div class="hero-note">
           <span class="note-star">✳</span>
           <span>
-            Uma ideia de Platão<br>
-            que continua iluminando o presente.
+            Uma ideia de Platão formulada há milênios<br>
+            que continua iluminando o nosso presente.
           </span>
         </div>
 
       </div>
 
 
-      <!-- IMAGEM PRINCIPAL -->
+      <!-- IMAGEM PRINCIPAL HERO -->
       <div class="hero-art">
 
         <div class="hero-image"></div>
@@ -119,21 +120,20 @@
         <div class="prose">
 
           <p>
-            Imagine passar a vida inteira olhando para uma parede.
-            Para quem nunca viu outra coisa, as sombras projetadas
-            nela parecem ser o próprio mundo. Mas e se houver muito
-            mais para conhecer?
+            Imagine passar a vida inteira acorrentado, olhando apenas para uma parede de pedra.
+            Para quem nunca experimentou outra realidade, as sombras projetadas
+            parecem ser o próprio universo. Mas e se existir muito mais para conhecer?
           </p>
 
           <p>
-            Na <i>República</i>, escrita há mais de dois mil anos,
-            Platão usa essa imagem para falar sobre conhecimento,
-            educação e a coragem de questionar aquilo que tomamos
-            como verdade.
+            Na <i>República</i> (Livro VII), escrita no século IV a.C.,
+            o filósofo grego Platão constrói a Alegoria da Caverna para discutir
+            a teoria das Ideias, a ilusão dos sentidos, o processo educativo (<i>paideia</i>)
+            e a coragem de romper com o senso comum em busca da verdade.
           </p>
 
           <a class="text-link" href="alegoria.html">
-            Conheça a história <span>→</span>
+            Conheça os passos da história <span>→</span>
           </a>
 
         </div>
@@ -142,72 +142,69 @@
     </section>
 
 
-    <!-- GALERIA -->
-    <section class="image-strip" aria-label="Imagens relacionadas a Platão">
+    <!-- GALERIA DE IMAGENS -->
+    <section class="image-strip" aria-label="Galeria de imagens históricas e conceituais">
 
       <figure>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/7/7b/Plato_Louvre_Ma4236.jpg"
-          alt="Busto de Platão"
+          src="imagens/platao-filosofo.jpg"
+          alt="Busto em mármore de Platão, filósofo grego clássico"
           loading="lazy"
         >
 
         <figcaption>
           <span>01</span>
-          Platão ·
-          <a href="https://commons.wikimedia.org/wiki/File:Plato_Louvre_Ma4236.jpg"
-             target="_blank"
-             rel="noopener noreferrer">
-            Wikimedia Commons
-          </a>
+          Platão (c. 428–348 a.C.) · Acervo clássico
         </figcaption>
       </figure>
 
       <figure>
         <img
-          src="https://upload.wikimedia.org/wikipedia/commons/1/15/Platon_Cave_Sanraedam_1604.jpg"
-          alt="Gravura histórica da Alegoria da Caverna"
+          src="imagens/caverna-sombras.jpg"
+          alt="Alegoria da Caverna de Platão: prisioneiros, fogueira e sombras projetadas"
           loading="lazy"
         >
 
         <figcaption>
           <span>02</span>
-          A Alegoria da Caverna · 1604
+          A Alegoria da Caverna · Jan Saenredam (1604)
         </figcaption>
       </figure>
 
       <figure>
         <img
-          src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"
-          alt="Paisagem montanhosa iluminada pelo sol"
+          src="imagens/etapa3-saida.jpg"
+          alt="Paisagem aberta banhada pelos raios solares no horizonte"
           loading="lazy"
         >
 
         <figcaption>
           <span>03</span>
-          O caminho para a descoberta
+          O mundo exterior iluminado pelo Sol
         </figcaption>
       </figure>
 
     </section>
 
 
-    <!-- CONCEITOS -->
+    <!-- CONCEITOS FUNDAMENTAIS -->
     <section class="concept-section section-wrap">
 
-      <div class="section-label">
-        02 <span>—</span> Três ideias fundamentais
-      </div>
-
       <div class="concept-heading">
-        <h2>
-          Muito além das<br>
-          <em>sombras.</em>
-        </h2>
+        <div>
+          <div class="section-label">
+            02 <span>—</span> Três conceitos fundamentais
+          </div>
+
+          <h2>
+            Muito além das<br>
+            <em>sombras.</em>
+          </h2>
+        </div>
 
         <p>
-          A alegoria apresenta uma reflexão sobre a maneira
-          como enxergamos e compreendemos a realidade.
+          A alegoria não é apenas uma metáfora visual: é uma reflexão estruturada
+          sobre a transição do mundo sensível para o mundo inteligível.
         </p>
       </div>
 
@@ -221,11 +218,11 @@
           <h3>As sombras</h3>
 
           <p>
-            Representam as aparências e aquilo que acreditamos
-            ser verdade sem questionar.
+            Simbolizam o mundo sensível e a <i>doxa</i> (opinião). Representam as aparências,
+            os preconceitos e as informações que aceitamos cegamente sem submeter ao crivo da razão.
           </p>
 
-          <a href="alegoria.html">Explorar conceito →</a>
+          <a href="alegoria.html#narrativa">Explorar conceito →</a>
         </article>
 
 
@@ -233,14 +230,14 @@
           <span class="concept-number">02</span>
           <div class="concept-symbol">◇</div>
 
-          <h3>A descoberta</h3>
+          <h3>A ascensão</h3>
 
           <p>
-            Representa o processo de questionar nossas crenças
-            e começar a buscar o verdadeiro conhecimento.
+            Representa a <i>paideia</i>: a educação filosófica dolorosa, gradual e transformadora
+            que liberta o indivíduo da ignorância e o conduz para fora do comodismo.
           </p>
 
-          <a href="alegoria.html">Explorar conceito →</a>
+          <a href="alegoria.html#narrativa">Explorar conceito →</a>
         </article>
 
 
@@ -248,14 +245,14 @@
           <span class="concept-number">03</span>
           <div class="concept-symbol">☼</div>
 
-          <h3>A luz</h3>
+          <h3>A luz solar</h3>
 
           <p>
-            Simboliza o conhecimento e a compreensão de uma
-            realidade que antes não conseguíamos enxergar.
+            Simboliza a Ideia do Bem (<i>Agathón</i>) e a verdade inteligível. É a fonte suprema
+            que concede inteligibilidade, ordem e sentido a todas as coisas conhecidas.
           </p>
 
-          <a href="alegoria.html">Explorar conceito →</a>
+          <a href="alegoria.html#tabela-simbolos">Explorar conceito →</a>
         </article>
 
       </div>
@@ -273,27 +270,26 @@
       </blockquote>
 
       <p>
-        Uma interpretação da Alegoria da Caverna ·
-        Platão, <i>A República</i>, Livro VII
+        Platão · <i>A República</i>, Livro VII (518d)
       </p>
 
     </section>
 
 
-    <!-- CHAMADA FINAL -->
+    <!-- CHAMADA PARA A PRÓXIMA PÁGINA -->
     <section class="next-section section-wrap">
 
       <div>
         <p class="eyebrow">A JORNADA CONTINUA</p>
 
         <h2>
-          Pronto para<br>
-          olhar de novo?
+          Pronto para compreender<br>
+          <em>cada detalhe da história?</em>
         </h2>
       </div>
 
       <a class="big-arrow-link" href="alegoria.html">
-        Entre na caverna <span>↗</span>
+        Entrar na narrativa e ver a tabela <span>↗</span>
       </a>
 
     </section>
@@ -301,44 +297,31 @@
   </main>
 
 
-  <!-- RODAPÉ -->
+  <!-- RODAPÉ COMPLETO -->
   <footer class="site-footer">
 
-    <a class="brand" href="index.html">
-      <span class="brand-mark">φ</span>
-      <span>Além da <b>Caverna</b></span>
-    </a>
+    <div class="footer-top">
+      <a class="brand" href="index.html">
+        <span class="brand-mark">φ</span>
+        <span>Além da <b>Caverna</b></span>
+      </a>
 
-    <p>
-      Projeto interdisciplinar ·
-      Filosofia, Web Design &amp; Multimídia
-    </p>
+      <nav class="footer-nav" aria-label="Navegação do rodapé">
+        <a href="index.html">Início</a>
+        <a href="alegoria.html">A alegoria</a>
+        <a href="reflexoes.html">Reflexões &amp; vídeo</a>
+      </nav>
+    </div>
 
-    <a href="#top">Voltar ao início ↑</a>
+    <div class="footer-bottom">
+      <p>
+        Projeto interdisciplinar de Filosofia · O Mito da Caverna de Platão (A República, Livro VII)
+      </p>
+
+      <a href="#top">Voltar ao início ↑</a>
+    </div>
 
   </footer>
-
-
-  <!-- ANIMAÇÕES -->
-  <script>
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
-
-    document.querySelectorAll(
-      ".intro-section, .concept-card, .quote-band, .next-section"
-    ).forEach(element => {
-      element.classList.add("reveal");
-      observer.observe(element);
-    });
-  </script>
 
 </body>
 </html>

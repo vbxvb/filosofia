@@ -1,16 +1,30 @@
+/* ==========================================================================
+   ALÉM DA CAVERNA — ESTILOS PRINCIPAIS (HTML & CSS PURO)
+   Identidade: Filosófica, Misteriosa e Elegante
+   Paleta: Dourado (#c6a36a) sobre Fundo Noturno (#171713)
+   Tipografia: Playfair Display (Serif) & DM Sans (Sans-serif)
+   ========================================================================== */
 
-/* CONFIGURAÇÕES GERAIS */
-
+/* --------------------------------------------------------------------------
+   1. VARIÁVEIS GLOBAIS E RESET
+   -------------------------------------------------------------------------- */
 :root {
   --bg: #171713;
   --surface: #22211c;
   --surface-light: #2c2921;
   --gold: #c6a36a;
   --gold-light: #dfc28d;
+  --gold-bright: #f0c98e;
   --text: #e9e1d2;
   --muted: #aaa393;
-  --font-title: 'Playfair Display', serif;
-  --font-body: 'DM Sans', sans-serif;
+  --paper-dim: #cfc7b8;
+  --ink: #171713;
+  --ink-soft: #201f1a;
+  --line: rgba(198, 163, 106, 0.2);
+  --line-light: rgba(198, 163, 106, 0.1);
+  --font-title: 'Playfair Display', Georgia, serif;
+  --serif: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 * {
@@ -28,7 +42,9 @@ body {
   background: var(--bg);
   color: var(--text);
   font-family: var(--font-body);
+  line-height: 1.7;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -41,9 +57,15 @@ img {
   width: 100%;
 }
 
+/* Acessibilidade de foco */
+:focus-visible {
+  outline: 2px solid var(--gold-bright);
+  outline-offset: 4px;
+}
 
-/* CABEÇALHO */
-
+/* --------------------------------------------------------------------------
+   2. CABEÇALHO E NAVEGAÇÃO
+   -------------------------------------------------------------------------- */
 .site-header {
   width: 100%;
   min-height: 85px;
@@ -53,74 +75,89 @@ img {
   justify-content: space-between;
   gap: 25px;
   background: rgba(23, 23, 19, 0.94);
-  border-bottom: 1px solid rgba(198, 163, 106, 0.13);
+  border-bottom: 1px solid var(--line);
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  transition: background 0.3s ease;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 11px;
+  gap: 12px;
   font-family: var(--font-title);
-  font-size: 19px;
+  font-size: 20px;
+  color: var(--text);
+  letter-spacing: 0.5px;
 }
 
 .brand b {
   color: var(--gold);
+  font-weight: 600;
 }
 
 .brand-mark {
   color: var(--gold);
-  font-size: 35px;
+  font-size: 34px;
+  line-height: 1;
 }
 
 .main-nav {
   display: flex;
-  gap: 35px;
+  align-items: center;
+  gap: 32px;
 }
 
 .main-nav a {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
-  transition: 0.3s;
+  letter-spacing: 0.5px;
   position: relative;
+  padding: 6px 0;
+  transition: color 0.3s ease;
 }
 
 .main-nav a:hover,
 .main-nav a.active {
-  color: var(--gold-light);
+  color: var(--gold-bright);
 }
 
 .main-nav a.active::after {
   content: "";
   position: absolute;
   width: 100%;
-  height: 1px;
+  height: 2px;
   background: var(--gold);
   left: 0;
-  bottom: -9px;
+  bottom: -2px;
 }
 
 .header-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   border: 1px solid var(--gold);
-  padding: 12px 20px;
+  padding: 10px 20px;
   font-size: 11px;
-  letter-spacing: 1px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   color: var(--gold-light);
-  transition: 0.3s;
+  background: transparent;
+  transition: all 0.3s ease;
 }
 
 .header-cta:hover {
   background: var(--gold);
-  color: var(--bg);
+  color: var(--ink);
+  transform: translateY(-2px);
 }
 
-
-/* HERO */
-
+/* --------------------------------------------------------------------------
+   3. HERO PRINCIPAL (INDEX.HTML)
+   -------------------------------------------------------------------------- */
 .hero {
   min-height: 680px;
   padding: 90px 9%;
@@ -138,103 +175,111 @@ img {
 
 .eyebrow {
   color: var(--gold);
-  font-size: 10px;
+  font-size: 11px;
   letter-spacing: 3px;
+  text-transform: uppercase;
   display: flex;
   align-items: center;
   gap: 12px;
+  margin-bottom: 20px;
 }
 
 .eyebrow-line {
   height: 1px;
-  width: 30px;
+  width: 32px;
   background: var(--gold);
 }
 
 .hero h1 {
   font-family: var(--font-title);
-  font-size: clamp(48px, 6vw, 79px);
+  font-size: clamp(44px, 5.5vw, 76px);
   line-height: 1.08;
   font-weight: 500;
-  margin: 35px 0 25px;
+  margin: 20px 0 24px;
 }
 
 .hero h1 em,
-h2 em {
+h2 em,
+h3 em {
   color: var(--gold);
+  font-style: italic;
   font-weight: 500;
 }
 
 .hero-intro {
   color: var(--muted);
-  font-size: 14px;
+  font-size: 15px;
   line-height: 1.9;
-  max-width: 400px;
+  max-width: 440px;
 }
 
 .round-link {
-  margin-top: 38px;
+  margin-top: 36px;
   display: inline-flex;
   align-items: center;
   gap: 15px;
-  font-size: 12px;
+  font-size: 13px;
   letter-spacing: 1px;
   color: var(--gold-light);
-  transition: 0.3s;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
 .round-link:hover {
-  transform: translateX(7px);
+  transform: translateX(6px);
+  color: var(--gold-bright);
 }
 
 .round-icon {
   border: 1px solid var(--gold);
-  width: 43px;
-  height: 43px;
+  width: 42px;
+  height: 42px;
   display: grid;
   place-items: center;
   border-radius: 50%;
-  font-size: 19px;
+  font-size: 18px;
+  color: var(--gold);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.round-link:hover .round-icon {
+  background: var(--gold);
+  color: var(--ink);
 }
 
 .hero-note {
   display: flex;
   align-items: center;
   gap: 15px;
-  margin-top: 65px;
-  font-size: 11px;
+  margin-top: 55px;
+  font-size: 12px;
   line-height: 1.7;
   color: var(--muted);
 }
 
 .note-star {
   color: var(--gold);
-  font-size: 28px;
+  font-size: 26px;
+  line-height: 1;
 }
-
-
-/* IMAGEM PRINCIPAL */
 
 .hero-art {
   height: 510px;
   position: relative;
   overflow: hidden;
-  border-radius: 3px;
+  border-radius: 4px;
   background: #29251e;
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.4);
 }
 
 .hero-image {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(
-      0deg,
-      rgba(23, 23, 19, 0.75),
-      transparent 55%
-    ),
+    linear-gradient(0deg, rgba(23, 23, 19, 0.8), transparent 55%),
     url("https://images.unsplash.com/photo-1473448912268-2022ce9509d8?auto=format&fit=crop&w=1400&q=90")
     center / cover;
-  animation: imageZoom 18s ease-in-out infinite alternate;
+  animation: imageZoom 20s ease-in-out infinite alternate;
 }
 
 .art-overlay {
@@ -244,29 +289,31 @@ h2 em {
     110deg,
     rgba(23, 23, 19, 0.35),
     transparent,
-    rgba(198, 163, 106, 0.12)
+    rgba(198, 163, 106, 0.15)
   );
 }
 
 .art-text {
   position: absolute;
-  bottom: 30px;
-  left: 30px;
-  right: 30px;
+  bottom: 25px;
+  left: 25px;
+  right: 25px;
   display: flex;
   justify-content: space-between;
   font-size: 9px;
   letter-spacing: 2px;
-  color: white;
+  color: #fff;
+  z-index: 2;
 }
 
 .art-decoration {
   position: absolute;
-  top: 25px;
-  right: 30px;
+  top: 20px;
+  right: 25px;
   font-family: var(--font-title);
-  font-size: 65px;
-  color: rgba(223, 194, 141, 0.7);
+  font-size: 60px;
+  color: rgba(223, 194, 141, 0.5);
+  line-height: 1;
 }
 
 .hero-index {
@@ -275,24 +322,177 @@ h2 em {
   bottom: 35px;
   font-size: 12px;
   color: var(--gold);
+  letter-spacing: 2px;
 }
 
 .hero-index span {
   color: var(--muted);
 }
 
+/* --------------------------------------------------------------------------
+   4. HERO DAS SUBPÁGINAS (ALEGORIA & REFLEXÕES)
+   -------------------------------------------------------------------------- */
+.page-hero {
+  min-height: 520px;
+  padding: 85px 8%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 50px;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+}
 
-/* INTRODUÇÃO */
+.page-hero-content {
+  max-width: 560px;
+  position: relative;
+  z-index: 2;
+}
 
+.page-hero-content h1 {
+  font-family: var(--font-title);
+  font-size: clamp(40px, 5vw, 68px);
+  line-height: 1.1;
+  font-weight: 500;
+  margin: 15px 0 20px;
+}
+
+.page-hero-art {
+  position: relative;
+  width: 40vw;
+  max-width: 520px;
+  height: 380px;
+  overflow: hidden;
+  border-radius: 4px;
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  background: var(--surface);
+  flex-shrink: 0;
+}
+
+.page-hero-art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.85);
+  transition: transform 1.2s ease, filter 1.2s ease;
+}
+
+.page-hero-art:hover img {
+  transform: scale(1.05);
+  filter: brightness(1);
+}
+
+.hero-art-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 23, 19, 0.45),
+    transparent 70%,
+    rgba(23, 23, 19, 0.25)
+  );
+}
+
+.beam {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 75% 25%, rgba(240, 201, 142, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.hero-side-text {
+  position: absolute;
+  bottom: 30px;
+  right: 4vw;
+  writing-mode: vertical-rl;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 3px;
+  opacity: 0.7;
+}
+
+/* Arte vetorial abstrata da página de reflexões */
+.reflection-hero-art {
+  position: relative;
+  width: 38vw;
+  max-width: 480px;
+  height: 380px;
+  overflow: hidden;
+  background: radial-gradient(
+    ellipse at 55% 45%,
+    #d8ae72 0,
+    #806044 20%,
+    #383126 48%,
+    #171713 80%
+  );
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.reflection-light {
+  position: absolute;
+  top: 15%;
+  left: 35%;
+  width: 55%;
+  height: 65%;
+  border-radius: 50%;
+  background: #edc98f;
+  filter: blur(65px);
+  opacity: 0.45;
+  animation: reflectionGlow 5s ease-in-out infinite alternate;
+}
+
+.reflection-circle {
+  position: absolute;
+  top: 25%;
+  left: 43%;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(255, 229, 185, 0.65);
+  border-radius: 50%;
+  box-shadow: 0 0 65px rgba(240, 201, 142, 0.25);
+}
+
+.reflection-shadow {
+  position: absolute;
+  bottom: -5%;
+  left: -10%;
+  width: 120%;
+  height: 55%;
+  background: linear-gradient(145deg, #28271f, #11110e);
+  clip-path: polygon(0 65%, 20% 25%, 40% 65%, 60% 18%, 80% 58%, 100% 30%, 100% 100%, 0 100%);
+}
+
+.reflection-art-label {
+  position: absolute;
+  z-index: 2;
+  bottom: 20px;
+  left: 20px;
+  color: #e8d4b5;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* --------------------------------------------------------------------------
+   5. SEÇÕES DE CONTEÚDO E TEXTO
+   -------------------------------------------------------------------------- */
 .section-wrap {
-  padding: 110px 10%;
+  padding: 100px 9%;
 }
 
 .section-label {
-  font-size: 10px;
-  letter-spacing: 2px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
   color: var(--gold);
-  margin-bottom: 55px;
+  margin-bottom: 45px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .section-label span {
@@ -302,120 +502,134 @@ h2 em {
 .intro-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 100px;
+  gap: 80px;
+  align-items: start;
 }
 
 .intro-grid h2,
 .concept-heading h2,
-.next-section h2 {
+.next-section h2,
+.story-intro h2,
+.reflection-intro h2 {
   font-family: var(--font-title);
-  font-size: clamp(35px, 4vw, 52px);
+  font-size: clamp(34px, 4vw, 50px);
   line-height: 1.2;
   font-weight: 500;
 }
 
 .prose p {
   color: var(--muted);
-  font-size: 13px;
-  line-height: 2;
+  font-size: 14px;
+  line-height: 1.9;
   margin-bottom: 20px;
 }
 
 .text-link {
-  display: inline-block;
-  color: var(--gold);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--gold-light);
   margin-top: 15px;
-  font-size: 12px;
+  font-size: 13px;
   border-bottom: 1px solid var(--gold);
-  padding-bottom: 7px;
+  padding-bottom: 5px;
+  transition: all 0.3s ease;
 }
 
-.text-link span {
-  margin-left: 12px;
+.text-link:hover {
+  color: #fff;
+  border-color: #fff;
+  transform: translateX(4px);
 }
 
-
-/* GALERIA */
-
+/* --------------------------------------------------------------------------
+   6. GALERIA DE IMAGENS (INDEX.HTML)
+   -------------------------------------------------------------------------- */
 .image-strip {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 12px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
   padding: 0 7%;
 }
 
 .image-strip figure {
   overflow: hidden;
   background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 3px;
 }
 
 .image-strip img {
   height: 290px;
   object-fit: cover;
-  filter: brightness(0.78);
-  transition: 0.6s;
+  filter: brightness(0.8);
+  transition: transform 0.7s ease, filter 0.7s ease;
 }
 
 .image-strip figure:hover img {
-  transform: scale(1.06);
+  transform: scale(1.05);
   filter: brightness(1);
 }
 
 .image-strip figcaption {
-  padding: 17px;
-  font-size: 10px;
+  padding: 16px;
+  font-size: 11px;
   color: var(--muted);
+  background: var(--surface);
 }
 
 .image-strip figcaption span {
   color: var(--gold);
   margin-right: 8px;
+  font-weight: 600;
 }
 
 .image-strip figcaption a {
   color: var(--gold-light);
+  border-bottom: 1px dotted var(--gold);
 }
 
-
-/* CONCEITOS */
-
+/* --------------------------------------------------------------------------
+   7. CARDS DE CONCEITO (INDEX.HTML)
+   -------------------------------------------------------------------------- */
 .concept-section {
-  padding-top: 130px;
-  padding-bottom: 130px;
+  padding-top: 110px;
+  padding-bottom: 110px;
 }
 
 .concept-heading {
   display: flex;
   justify-content: space-between;
-  align-items: end;
+  align-items: flex-end;
   gap: 30px;
-  margin-bottom: 55px;
+  margin-bottom: 50px;
 }
 
 .concept-heading p {
-  max-width: 320px;
+  max-width: 360px;
   color: var(--muted);
-  font-size: 13px;
-  line-height: 1.9;
+  font-size: 14px;
+  line-height: 1.8;
 }
 
 .concept-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 15px;
+  gap: 20px;
 }
 
 .concept-card {
   background: var(--surface);
-  border: 1px solid rgba(198, 163, 106, 0.13);
+  border: 1px solid var(--line);
+  border-radius: 3px;
   padding: 35px 30px;
   min-height: 300px;
   position: relative;
-  transition: 0.4s;
+  transition: transform 0.35s ease, border-color 0.35s ease;
 }
 
 .concept-card:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   border-color: var(--gold);
 }
 
@@ -425,77 +639,759 @@ h2 em {
 }
 
 .concept-number {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--gold);
   letter-spacing: 2px;
 }
 
 .concept-symbol {
-  font-size: 38px;
+  font-size: 36px;
   color: var(--gold);
-  margin: 30px 0 20px;
+  margin: 25px 0 15px;
 }
 
 .concept-card h3 {
   font-family: var(--font-title);
-  font-size: 25px;
+  font-size: 24px;
   font-weight: 500;
-  margin-bottom: 13px;
+  margin-bottom: 12px;
 }
 
 .concept-card p {
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.9;
+  font-size: 13px;
+  line-height: 1.8;
   margin-bottom: 25px;
 }
 
 .concept-card a {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--gold-light);
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: transform 0.3s ease;
 }
 
+.concept-card a:hover {
+  transform: translateX(4px);
+  color: var(--gold-bright);
+}
 
-/* FRASE */
-
+/* --------------------------------------------------------------------------
+   8. CITAÇÃO FILOSÓFICA (QUOTE BAND)
+   -------------------------------------------------------------------------- */
 .quote-band {
-  padding: 100px 10%;
+  padding: 95px 10%;
   text-align: center;
   background:
-    linear-gradient(
-      rgba(23, 23, 19, 0.85),
-      rgba(23, 23, 19, 0.92)
-    ),
+    linear-gradient(rgba(23, 23, 19, 0.88), rgba(23, 23, 19, 0.94)),
     url("https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1600&q=85")
     center / cover;
-  border-top: 1px solid rgba(198, 163, 106, 0.2);
-  border-bottom: 1px solid rgba(198, 163, 106, 0.2);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
 }
 
 .quote-mark {
   font-family: var(--font-title);
-  font-size: 75px;
+  font-size: 70px;
   color: var(--gold);
+  line-height: 1;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .quote-band blockquote {
-  max-width: 800px;
-  margin: 0 auto 25px;
+  max-width: 820px;
+  margin: 0 auto 20px;
   font-family: var(--font-title);
-  font-size: clamp(25px, 4vw, 43px);
+  font-size: clamp(24px, 3.8vw, 40px);
   line-height: 1.4;
   font-style: italic;
+  color: var(--text);
 }
 
 .quote-band p {
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* --------------------------------------------------------------------------
+   9. NARRATIVA E ETAPAS (ALEGORIA.HTML)
+   -------------------------------------------------------------------------- */
+.story-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.story-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.25fr;
+  gap: 70px;
+  align-items: start;
+}
+
+.story-intro {
+  position: sticky;
+  top: 120px;
+}
+
+.story-mini-label {
+  display: inline-block;
+  margin-bottom: 18px;
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.story-intro h2 {
+  margin-bottom: 24px;
+}
+
+.story-quote {
+  margin-top: 35px;
+  padding: 20px 22px;
+  border-left: 3px solid var(--gold);
+  background: rgba(215, 173, 114, 0.06);
+  border-radius: 0 4px 4px 0;
+}
+
+.story-quote span {
+  color: var(--gold);
+  font-family: var(--font-title);
+  font-size: 32px;
+  line-height: 1;
+  display: block;
+}
+
+.story-quote p {
+  color: var(--paper-dim);
+  font-family: var(--font-title);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  margin: 5px 0 0;
+}
+
+.story-steps {
+  position: relative;
+}
+
+.story-steps::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  top: 25px;
+  bottom: 25px;
+  width: 1px;
+  background: linear-gradient(var(--gold), rgba(215, 173, 114, 0.1));
+}
+
+.story-step {
+  position: relative;
+  display: grid;
+  grid-template-columns: 42px 1fr;
+  gap: 25px;
+  align-items: start;
+  padding: 28px 0;
+}
+
+.step-number {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  place-items: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--ink);
+  color: var(--gold-bright);
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+}
+
+.step-content {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 25px;
+  border-radius: 3px;
+  transition: border-color 0.3s ease;
+}
+
+.story-step:hover .step-content {
+  border-color: rgba(198, 163, 106, 0.45);
+}
+
+.step-image {
+  height: 180px;
+  margin-bottom: 20px;
+  overflow: hidden;
+  background: var(--ink-soft);
+  border-radius: 2px;
+}
+
+.step-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.75) saturate(0.8);
+  transition: transform 0.7s ease, filter 0.7s ease;
+}
+
+.story-step:hover .step-image img {
+  transform: scale(1.05);
+  filter: brightness(0.95) saturate(1);
+}
+
+.step-tag {
+  display: inline-block;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.step-content h3 {
+  margin: 6px 0 12px;
+  font-size: 24px;
+  font-family: var(--font-title);
+  font-weight: 500;
+  color: var(--text);
+}
+
+.step-content p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   10. TABELA DE SÍMBOLOS E SIGNIFICADOS (ALEGORIA.HTML)
+   -------------------------------------------------------------------------- */
+.meaning-section {
+  padding: 100px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.meaning-section h2 {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4vw, 48px);
+  margin-top: 15px;
+  font-weight: 500;
+}
+
+.meaning-intro {
+  max-width: 600px;
+  margin: 18px 0 35px;
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin: 25px 0 15px;
+  border: 1px solid rgba(198, 163, 106, 0.25);
+  border-radius: 4px;
+  background: var(--bg);
+  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
+}
+
+.meaning-section table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 13px;
+  min-width: 640px;
+}
+
+.meaning-section caption {
+  padding: 16px 22px;
+  text-align: left;
+  font-family: var(--font-title);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--gold-light);
+  background: rgba(198, 163, 106, 0.08);
+  border-bottom: 1px solid var(--line);
+  letter-spacing: 0.5px;
+}
+
+.meaning-section thead th {
+  background: rgba(198, 163, 106, 0.12);
+  color: var(--gold-bright);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 16px 20px;
+  border-bottom: 2px solid rgba(198, 163, 106, 0.3);
+  font-weight: 600;
+}
+
+.meaning-section tbody th,
+.meaning-section tbody td {
+  padding: 16px 20px;
+  border-bottom: 1px solid rgba(198, 163, 106, 0.1);
+  line-height: 1.7;
+  vertical-align: top;
+}
+
+.meaning-section tbody th {
+  color: var(--gold-light);
+  font-family: var(--font-title);
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+  border-left: 3px solid transparent;
+  transition: border-color 0.25s, color 0.25s;
+}
+
+.meaning-section tbody td {
+  color: var(--text);
+  font-size: 13px;
+}
+
+.meaning-section tbody td:first-of-type {
+  color: var(--paper-dim);
+}
+
+.meaning-section tbody tr:nth-child(even) {
+  background: rgba(255, 255, 255, 0.015);
+}
+
+.meaning-section tbody tr:hover {
+  background: rgba(198, 163, 106, 0.08);
+}
+
+.meaning-section tbody tr:hover th {
+  border-left-color: var(--gold);
+  color: var(--gold-bright);
+}
+
+.table-note {
+  font-size: 12px;
+  color: var(--muted);
+  margin-top: 18px;
+  line-height: 1.7;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   11. SEÇÃO DE PERGUNTA / REFLEXÃO FINAL (QUESTION BAND)
+   -------------------------------------------------------------------------- */
+.question-band {
+  position: relative;
+  overflow: hidden;
+  padding: 100px 9%;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+}
+
+.question-decoration {
+  position: absolute;
+  right: 5%;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: var(--font-title);
+  font-size: 260px;
+  color: rgba(215, 173, 114, 0.035);
+  pointer-events: none;
+  line-height: 1;
+}
+
+.question-band > *:not(.question-decoration) {
+  position: relative;
+  z-index: 1;
+}
+
+.question-band h2 {
+  font-family: var(--font-title);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.3;
+  margin: 15px auto;
+  max-width: 750px;
+}
+
+.question-description {
+  max-width: 580px;
+  margin: 15px auto 30px;
+  color: var(--paper-dim);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* --------------------------------------------------------------------------
+   12. CARDS DE REFLEXÕES CONTEMPORÂNEAS (REFLEXOES.HTML)
+   -------------------------------------------------------------------------- */
+.reflection-section {
+  padding-top: 90px;
+  padding-bottom: 90px;
+}
+
+.reflection-intro {
+  max-width: 700px;
+  margin-bottom: 45px;
+}
+
+.reflection-intro p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  margin-top: 15px;
+}
+
+.reflection-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+  gap: 24px;
+}
+
+.reflection-card {
+  position: relative;
+  min-height: 380px;
+  padding: 36px 32px 65px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.35s ease, border-color 0.35s ease;
+}
+
+.reflection-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(215, 173, 114, 0.55);
+}
+
+.reflection-card.card-light:hover {
+  background: #2b2820;
+}
+
+.card-index {
+  color: var(--gold);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.reflection-icon {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin: 22px 0 16px;
+  border: 1px solid rgba(215, 173, 114, 0.4);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-size: 18px;
+}
+
+.reflection-card h2,
+.reflection-card h3 {
+  font-family: var(--font-title);
+  font-size: 24px;
+  line-height: 1.25;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.reflection-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+.card-bottom {
+  position: absolute;
+  right: 28px;
+  bottom: 22px;
+  left: 28px;
+  display: flex;
+  justify-content: space-between;
+  padding-top: 12px;
+  border-top: 1px solid rgba(238, 234, 223, 0.12);
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 1.5px;
+}
+
+.card-bottom span:last-child {
+  color: var(--muted);
+}
+
+.card-symbol {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  font-size: 20px;
+  color: rgba(198, 163, 106, 0.2);
+}
+
+/* Destaque filosófico largo */
+.reflection-highlight {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-top: 45px;
+  padding: 35px 30px;
+  border: 1px solid rgba(215, 173, 114, 0.25);
+  background: linear-gradient(
+    110deg,
+    rgba(215, 173, 114, 0.08),
+    rgba(215, 173, 114, 0.02)
+  );
+  border-radius: 4px;
+}
+
+.highlight-symbol {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  color: var(--gold-bright);
+  font-family: var(--font-title);
+  font-size: 32px;
+}
+
+.reflection-highlight h3 {
+  font-family: var(--font-title);
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 500;
+  line-height: 1.3;
+  margin: 8px 0 6px;
+  color: var(--text);
+}
+
+.reflection-highlight p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+/* --------------------------------------------------------------------------
+   13. SEÇÃO DO VÍDEO INCORPORADO (REFLEXOES.HTML)
+   -------------------------------------------------------------------------- */
+.video-section {
+  padding: 100px 0;
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.video-heading {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  align-items: end;
+  margin-bottom: 45px;
+}
+
+.video-container {
+  padding: 22px;
+  border: 1px solid rgba(198, 163, 106, 0.25);
+  background: var(--bg);
+  box-shadow: 0 25px 65px rgba(0, 0, 0, 0.4);
+  border-radius: 4px;
+}
+
+.video-top-label {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 4px 14px;
+  color: var(--gold);
+  font-size: 9px;
+  letter-spacing: 2px;
+  font-weight: 600;
+}
+
+.video-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0c0c0a;
+  border: 1px solid rgba(198, 163, 106, 0.18);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.video-frame video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: #0c0c0a;
+}
+
+.video-fallback-box {
+  padding: 25px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.video-caption {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  padding: 0 4px;
+  color: var(--muted);
+  font-size: 10px;
   letter-spacing: 1px;
 }
 
+.video-info {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 40px;
+  margin-top: 40px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line);
+}
 
-/* CHAMADA FINAL */
+.video-info h3 {
+  font-family: var(--font-title);
+  font-size: 24px;
+  font-weight: 500;
+  margin-top: 6px;
+}
 
+.video-info p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Caixa com instruções para o vídeo escolar */
+.video-guide-box {
+  margin-top: 25px;
+  padding: 20px 24px;
+  background: rgba(198, 163, 106, 0.05);
+  border-left: 3px solid var(--gold);
+  border-radius: 0 3px 3px 0;
+}
+
+.video-guide-box h4 {
+  font-family: var(--font-title);
+  color: var(--gold-light);
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+
+.video-guide-box p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+  margin-bottom: 10px;
+}
+
+.video-guide-box ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 25px;
+}
+
+.video-guide-box li {
+  font-size: 12px;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.video-guide-box li strong {
+  color: var(--gold);
+}
+
+/* --------------------------------------------------------------------------
+   14. FICHA TÉCNICA DO PROJETO ESCOLAR (REFLEXOES.HTML)
+   -------------------------------------------------------------------------- */
+.team-section {
+  padding-top: 85px;
+  padding-bottom: 85px;
+  border-bottom: 1px solid var(--line);
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.team-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 30px;
+  border-radius: 4px;
+}
+
+.team-card h3 {
+  font-family: var(--font-title);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 10px 0 15px;
+  color: var(--gold-light);
+}
+
+.team-card p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.8;
+}
+
+.team-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.team-list li {
+  font-size: 13px;
+  color: var(--text);
+  padding-bottom: 8px;
+  border-bottom: 1px dotted var(--line);
+}
+
+.team-list li strong {
+  color: var(--gold);
+  margin-right: 6px;
+}
+
+.team-note {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 15px;
+  font-style: italic;
+}
+
+/* --------------------------------------------------------------------------
+   15. CHAMADA FINAL E ENCERRAMENTO
+   -------------------------------------------------------------------------- */
 .next-section {
   display: flex;
   align-items: center;
@@ -504,96 +1400,192 @@ h2 em {
 }
 
 .next-section .eyebrow {
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .big-arrow-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
   color: var(--gold-light);
   border-bottom: 1px solid var(--gold);
-  padding: 15px 0;
-  font-size: 13px;
-  transition: 0.3s;
+  padding: 12px 0;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
 }
 
 .big-arrow-link:hover {
   letter-spacing: 2px;
+  color: #fff;
+  border-color: #fff;
 }
 
-.big-arrow-link span {
-  margin-left: 20px;
+.closing-section {
+  display: flex;
+  align-items: flex-start;
+  gap: 35px;
+  padding-top: 90px;
+  padding-bottom: 90px;
 }
 
+.closing-star {
+  font-size: 42px;
+  color: var(--gold);
+  line-height: 1;
+}
 
-/* RODAPÉ */
+.closing-content h2 {
+  font-family: var(--font-title);
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 12px 0 16px;
+  font-weight: 500;
+}
 
+.closing-content p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  max-width: 500px;
+}
+
+/* --------------------------------------------------------------------------
+   16. RODAPÉ COMPLETO COM NAVEGAÇÃO
+   -------------------------------------------------------------------------- */
 .site-footer {
-  padding: 35px 7%;
+  padding: 45px 7% 35px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  border-top: 1px solid var(--line);
+  background: #131310;
+}
+
+.footer-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-nav {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  flex-wrap: wrap;
+}
+
+.footer-nav a {
+  font-size: 12px;
+  color: var(--muted);
+  transition: color 0.3s ease;
+}
+
+.footer-nav a:hover {
+  color: var(--gold-bright);
+}
+
+.footer-bottom {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  border-top: 1px solid rgba(198, 163, 106, 0.15);
-}
-
-.site-footer p,
-.site-footer > a:last-child {
-  font-size: 10px;
+  padding-top: 20px;
+  border-top: 1px solid var(--line-light);
+  font-size: 11px;
   color: var(--muted);
+  flex-wrap: wrap;
 }
 
+.footer-bottom a {
+  color: var(--gold);
+  transition: color 0.3s ease;
+}
 
-/* ANIMAÇÕES */
+.footer-bottom a:hover {
+  color: var(--gold-light);
+}
 
+/* --------------------------------------------------------------------------
+   17. ANIMAÇÕES (CSS PURO, SEM JAVASCRIPT)
+   -------------------------------------------------------------------------- */
 @keyframes imageZoom {
   from {
     transform: scale(1);
   }
-
   to {
-    transform: scale(1.09);
+    transform: scale(1.08);
   }
 }
 
+@keyframes reflectionGlow {
+  from {
+    opacity: 0.28;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 0.55;
+    transform: scale(1.08);
+  }
+}
+
+/* Elementos reveal sempre visíveis por padrão para garantir 100% de
+   acessibilidade e funcionamento sem necessidade de JavaScript */
 .reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 900px) {
-
+/* --------------------------------------------------------------------------
+   18. RESPONSIVIDADE E ADAPTAÇÃO MOBILE / TABLET
+   -------------------------------------------------------------------------- */
+@media (max-width: 992px) {
   .hero {
-    gap: 35px;
+    gap: 40px;
     padding: 70px 6%;
   }
 
-  .hero-art {
-    height: 430px;
+  .page-hero {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 70px 6%;
+    gap: 35px;
   }
 
-  .intro-grid {
-    gap: 40px;
+  .page-hero-art,
+  .reflection-hero-art {
+    width: 100%;
+    max-width: 100%;
+    height: 320px;
+  }
+
+  .hero-side-text {
+    display: none;
+  }
+
+  .intro-grid,
+  .story-grid,
+  .team-grid,
+  .video-heading,
+  .video-info {
+    grid-template-columns: 1fr;
+    gap: 35px;
+  }
+
+  .story-intro {
+    position: static;
   }
 
   .concept-grid {
     grid-template-columns: 1fr 1fr;
   }
-
 }
 
-@media (max-width: 650px) {
-
+@media (max-width: 680px) {
   .site-header {
     flex-wrap: wrap;
-    padding: 18px 5%;
+    padding: 16px 5%;
   }
 
   .main-nav {
@@ -601,28 +1593,31 @@ h2 em {
     width: 100%;
     justify-content: space-between;
     gap: 10px;
+    padding-top: 10px;
+    border-top: 1px solid var(--line-light);
   }
 
   .main-nav a {
-    font-size: 10px;
+    font-size: 11px;
   }
 
   .header-cta {
-    padding: 9px 12px;
-    font-size: 9px;
+    padding: 8px 14px;
+    font-size: 10px;
   }
 
   .hero {
     grid-template-columns: 1fr;
-    padding: 65px 7%;
+    padding: 55px 6%;
+    gap: 35px;
   }
 
   .hero h1 {
-    font-size: 51px;
+    font-size: 42px;
   }
 
   .hero-art {
-    height: 370px;
+    height: 340px;
   }
 
   .hero-index {
@@ -630,21 +1625,16 @@ h2 em {
   }
 
   .section-wrap {
-    padding: 75px 7%;
-  }
-
-  .intro-grid {
-    grid-template-columns: 1fr;
-    gap: 30px;
+    padding: 70px 6%;
   }
 
   .image-strip {
     grid-template-columns: 1fr;
-    padding: 0 7%;
+    padding: 0 6%;
   }
 
   .image-strip img {
-    height: 260px;
+    height: 240px;
   }
 
   .concept-heading {
@@ -656,24 +1646,44 @@ h2 em {
     grid-template-columns: 1fr;
   }
 
-  .concept-card {
-    min-height: 270px;
+  .story-step {
+    grid-template-columns: 36px 1fr;
+    gap: 15px;
+  }
+
+  .step-number {
+    width: 34px;
+    height: 34px;
+    font-size: 11px;
+  }
+
+  .story-steps::before {
+    left: 17px;
   }
 
   .quote-band {
-    padding: 75px 7%;
+    padding: 70px 6%;
   }
 
-  .next-section {
+  .reflection-highlight {
     flex-direction: column;
     align-items: flex-start;
+    gap: 18px;
+    padding: 24px;
   }
 
-  .site-footer {
+  .video-container {
+    padding: 12px;
+  }
+
+  .closing-section,
+  .next-section,
+  .footer-top,
+  .footer-bottom {
     flex-direction: column;
     align-items: flex-start;
+    gap: 15px;
   }
-
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -689,869 +1699,4 @@ h2 em {
     opacity: 1;
     transform: none;
   }
-}
-
-/* =================================
-   MELHORIAS VISUAIS
-================================= */
-
-/* CABEÇALHO FIXO */
-
-.site-header {
-  position: sticky;
-  top: 0;
-  background: rgba(23, 23, 19, 0.94);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transition: background .3s ease;
-}
-
-/* LINKS DO MENU */
-
-.main-nav a {
-  transition: color .3s ease, border-color .3s ease;
-}
-
-.main-nav a:hover {
-  color: var(--gold-bright);
-}
-
-/* BOTÃO PRINCIPAL */
-
-.header-cta {
-  transition: .3s ease;
-}
-
-.header-cta:hover {
-  background: var(--gold);
-  color: var(--ink);
-  transform: translateY(-2px);
-}
-
-/* IMAGEM PRINCIPAL */
-
-.hero-art {
-  transition: filter .5s ease;
-}
-
-.hero-art:hover {
-  filter: brightness(1.12);
-}
-
-.art-sun {
-  animation: sunGlow 5s ease-in-out infinite alternate;
-}
-
-@keyframes sunGlow {
-  from {
-    box-shadow: 0 0 45px 15px rgba(235,184,106,.25);
-  }
-  to {
-    box-shadow: 0 0 85px 35px rgba(235,184,106,.48);
-  }
-}
-
-/* GALERIA */
-
-.image-strip figure {
-  border: 1px solid rgba(215,173,114,.12);
-}
-
-.image-strip img {
-  transition: transform .7s ease, filter .7s ease;
-}
-
-.image-strip figure:hover img {
-  transform: scale(1.07);
-  filter: saturate(.9) brightness(.95);
-}
-
-/* CARDS DE REFLEXÃO */
-
-.reflection-card,
-.story-step {
-  transition: border-color .3s ease, background .3s ease;
-}
-
-.reflection-card {
-  border: 1px solid rgba(215,173,114,.10);
-}
-
-.reflection-card:hover {
-  border-color: rgba(215,173,114,.55);
-  background-color: #2c2a22;
-}
-
-/* TABELA */
-
-tbody tr {
-  transition: background .25s ease;
-}
-
-tbody tr:hover {
-  background: rgba(215,173,114,.09);
-}
-
-/* BOTÕES E LINKS */
-
-.text-link,
-.big-arrow-link {
-  transition: .3s ease;
-}
-
-.text-link:hover,
-.big-arrow-link:hover {
-  color: white;
-  border-color: white;
-}
-
-/* ANIMAÇÃO DE ENTRADA */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ACESSIBILIDADE */
-
-:focus-visible {
-  outline: 2px solid var(--gold-bright);
-  outline-offset: 5px;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    transition-duration: .01ms !important;
-  }
-}
-
-/* =========================================
-   NOVO VISUAL - PÁGINA DA ALEGORIA
-========================================= */
-
-/* ABERTURA */
-
-.allegory-hero {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.page-hero-content {
-  position: relative;
-  z-index: 2;
-}
-
-.page-hero-art {
-  border: 1px solid rgba(215,173,114,.2);
-  box-shadow: 0 25px 80px rgba(0,0,0,.35);
-}
-
-.page-hero-art img {
-  transition: transform 1s ease;
-}
-
-.page-hero-art:hover img {
-  transform: scale(1.06);
-}
-
-.hero-art-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    rgba(23,23,19,.4),
-    transparent 70%,
-    rgba(23,23,19,.2)
-  );
-}
-
-.hero-side-text {
-  position: absolute;
-  bottom: 35px;
-  right: 7vw;
-  writing-mode: vertical-rl;
-  color: var(--gold);
-  font-size: 9px;
-  letter-spacing: 3px;
-}
-
-/* INTRODUÇÃO DA HISTÓRIA */
-
-.story-mini-label {
-  display: inline-block;
-  margin-bottom: 23px;
-  color: var(--gold);
-  font-size: 9px;
-  letter-spacing: 2px;
-}
-
-.story-intro h2 {
-  margin-bottom: 27px;
-}
-
-.story-intro .prose {
-  margin-bottom: 15px;
-}
-
-.story-quote {
-  margin-top: 35px;
-  padding: 20px 22px;
-  border-left: 2px solid var(--gold);
-  background: rgba(215,173,114,.06);
-}
-
-.story-quote span {
-  color: var(--gold);
-  font-family: var(--serif);
-  font-size: 35px;
-}
-
-.story-quote p {
-  color: var(--paper-dim);
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 17px;
-  line-height: 1.6;
-}
-
-/* ETAPAS DA HISTÓRIA */
-
-.story-steps {
-  position: relative;
-}
-
-.story-steps::before {
-  content: "";
-  position: absolute;
-  left: 17px;
-  top: 20px;
-  bottom: 20px;
-  width: 1px;
-  background: linear-gradient(
-    var(--gold),
-    rgba(215,173,114,.08)
-  );
-}
-
-.story-step {
-  position: relative;
-  align-items: start;
-  padding: 30px 0;
-  transition: .35s ease;
-}
-
-.step-number {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  place-items: center;
-  width: 35px;
-  height: 35px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background: var(--ink);
-  color: var(--gold-bright);
-}
-
-.step-content {
-  min-width: 0;
-}
-
-.step-image {
-  height: 165px;
-  margin-bottom: 20px;
-  overflow: hidden;
-  background: var(--ink-soft);
-}
-
-.step-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(.72) saturate(.7);
-  transition: transform .7s ease, filter .7s ease;
-}
-
-.story-step:hover .step-image img {
-  transform: scale(1.06);
-  filter: brightness(.95) saturate(.9);
-}
-
-.step-tag {
-  color: var(--gold);
-  font-size: 8px;
-  letter-spacing: 2px;
-}
-
-.step-content h3 {
-  margin: 12px 0;
-  font-size: 25px;
-  font-family: var(--serif);
-  font-weight: 500;
-}
-
-.step-content p {
-  max-width: 480px;
-  color: #aaa99e;
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-/* SIGNIFICADO DOS SÍMBOLOS */
-
-.meaning-section h2 {
-  margin-top: 35px;
-}
-
-.meaning-intro {
-  max-width: 460px;
-  margin-bottom: 40px;
-  color: #777166;
-  font-size: 13px;
-  line-height: 1.9;
-}
-
-.meaning-section table {
-  box-shadow: 0 15px 40px rgba(0,0,0,.04);
-}
-
-.meaning-section tbody tr:hover {
-  background: rgba(155,115,68,.09);
-}
-
-.meaning-section tbody th {
-  border-left: 2px solid transparent;
-  transition: border-color .3s;
-}
-
-.meaning-section tbody tr:hover th {
-  border-left-color: #9b7344;
-}
-
-/* PERGUNTA FINAL */
-
-.question-band {
-  position: relative;
-  overflow: hidden;
-}
-
-.question-decoration {
-  position: absolute;
-  right: 8%;
-  top: 10%;
-  font-family: var(--serif);
-  font-size: 220px;
-  color: rgba(215,173,114,.045);
-  pointer-events: none;
-}
-
-.question-band > *:not(.question-decoration) {
-  position: relative;
-  z-index: 1;
-}
-
-.question-description {
-  max-width: 500px;
-  margin: 20px auto 0;
-  color: var(--paper-dim);
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-/* ENTRADA DOS ELEMENTOS */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* CELULAR */
-
-@media (max-width: 620px) {
-
-  .page-hero-content {
-    width: 100%;
-  }
-
-  .page-hero-art {
-    position: relative;
-    top: auto;
-    right: auto;
-    width: 100%;
-    height: 230px;
-    margin-top: 35px;
-    opacity: 1;
-    clip-path: none;
-  }
-
-  .page-hero-art img {
-    object-fit: cover;
-  }
-
-  .hero-side-text {
-    display: none;
-  }
-
-  .story-steps::before {
-    left: 15px;
-  }
-
-  .story-step {
-    grid-template-columns: 40px 1fr;
-    gap: 10px;
-  }
-
-  .step-image {
-    height: 145px;
-  }
-
-  .question-decoration {
-    font-size: 130px;
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* =========================================
-   PÁGINA 03 - REFLEXÕES E VÍDEO
-========================================= */
-
-/* ABERTURA */
-
-.reflection-hero {
-  min-height: 540px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
-
-.reflection-hero .page-hero-content {
-  max-width: 600px;
-}
-
-.reflection-hero-art {
-  position: absolute;
-  top: 45px;
-  right: 12vw;
-  width: 35vw;
-  height: 390px;
-  overflow: hidden;
-  background:
-    radial-gradient(
-      ellipse at 55% 45%,
-      #d8ae72 0,
-      #806044 20%,
-      #383126 48%,
-      #171713 80%
-    );
-  border: 1px solid rgba(215,173,114,.15);
-  box-shadow: 0 25px 80px rgba(0,0,0,.25);
-}
-
-.reflection-light {
-  position: absolute;
-  top: 15%;
-  left: 35%;
-  width: 55%;
-  height: 65%;
-  border-radius: 50%;
-  background: #edc98f;
-  filter: blur(75px);
-  opacity: .42;
-  animation: reflectionGlow 5s ease-in-out infinite alternate;
-}
-
-.reflection-circle {
-  position: absolute;
-  top: 25%;
-  left: 43%;
-  width: 125px;
-  height: 125px;
-  border: 1px solid rgba(255,229,185,.65);
-  border-radius: 50%;
-  box-shadow: 0 0 65px rgba(240,201,142,.25);
-}
-
-.reflection-shadow {
-  position: absolute;
-  bottom: -5%;
-  left: -10%;
-  width: 120%;
-  height: 55%;
-  background: linear-gradient(145deg,#28271f,#11110e);
-  clip-path: polygon(0 65%,20% 25%,40% 65%,60% 18%,80% 58%,100% 30%,100% 100%,0 100%);
-}
-
-.reflection-art-label {
-  position: absolute;
-  z-index: 2;
-  bottom: 20px;
-  left: 20px;
-  color: #e8d4b5;
-  font-size: 8px;
-  letter-spacing: 2px;
-}
-
-@keyframes reflectionGlow {
-  from {
-    opacity: .25;
-    transform: scale(.9);
-  }
-  to {
-    opacity: .5;
-    transform: scale(1.1);
-  }
-}
-
-/* INTRODUÇÃO */
-
-.reflection-intro {
-  max-width: 680px;
-  margin: 48px 0 45px;
-}
-
-.reflection-intro h2 {
-  margin: 0 0 20px;
-  font-family: var(--serif);
-  font-size: clamp(35px,5vw,57px);
-  font-weight: 500;
-  line-height: 1.15;
-  letter-spacing: -.04em;
-}
-
-.reflection-intro h2 em {
-  color: var(--gold-bright);
-}
-
-.reflection-intro p {
-  max-width: 590px;
-  color: #aaa99e;
-  font-size: 13px;
-  line-height: 1.95;
-}
-
-/* CARDS */
-
-.reflection-grid {
-  gap: 20px;
-}
-
-.reflection-card {
-  min-height: 380px;
-  padding: 36px;
-  border: 1px solid rgba(215,173,114,.16);
-  transition: transform .35s ease, border-color .35s ease;
-}
-
-.reflection-card:hover {
-  transform: translateY(-7px);
-  border-color: rgba(215,173,114,.55);
-}
-
-.reflection-card.card-light:hover {
-  background: #3c382b;
-}
-
-.reflection-icon {
-  display: grid;
-  place-items: center;
-  width: 46px;
-  height: 46px;
-  margin-top: 30px;
-  border: 1px solid rgba(215,173,114,.5);
-  border-radius: 50%;
-  color: var(--gold-bright);
-  font-size: 20px;
-}
-
-.reflection-card h2 {
-  margin-top: 22px;
-}
-
-.reflection-card p {
-  max-width: 390px;
-}
-
-.card-bottom {
-  position: absolute;
-  right: 28px;
-  bottom: 22px;
-  left: 28px;
-  display: flex;
-  justify-content: space-between;
-  padding-top: 14px;
-  border-top: 1px solid rgba(238,234,223,.15);
-  color: var(--gold);
-  font-size: 8px;
-  letter-spacing: 1.5px;
-}
-
-.card-bottom span:last-child {
-  color: #aaa99e;
-}
-
-/* DESTAQUE FILOSÓFICO */
-
-.reflection-highlight {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-  margin-top: 45px;
-  padding: 35px;
-  border: 1px solid rgba(215,173,114,.25);
-  background: linear-gradient(
-    110deg,
-    rgba(215,173,114,.09),
-    rgba(215,173,114,.015)
-  );
-}
-
-.highlight-symbol {
-  display: grid;
-  place-items: center;
-  flex-shrink: 0;
-  width: 65px;
-  height: 65px;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  color: var(--gold-bright);
-  font-family: var(--serif);
-  font-size: 35px;
-}
-
-.reflection-highlight h3 {
-  max-width: 600px;
-  margin: 13px 0 8px;
-  font-family: var(--serif);
-  font-size: clamp(21px,3vw,29px);
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-.reflection-highlight p {
-  margin: 0;
-  color: #aaa99e;
-  font-size: 11px;
-  line-height: 1.8;
-}
-
-/* VÍDEO */
-
-.video-container {
-  padding: 16px;
-  border: 1px solid rgba(215,173,114,.22);
-  background: #171713;
-  box-shadow: 0 25px 65px rgba(0,0,0,.25);
-}
-
-.video-top-label {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px 4px 16px;
-  color: var(--gold);
-  font-size: 8px;
-  letter-spacing: 2px;
-}
-
-.video-frame {
-  border: 1px solid rgba(215,173,114,.15);
-  background: #0c0c0a;
-}
-
-.video-frame video {
-  background: #0c0c0a;
-}
-
-.video-placeholder {
-  z-index: 2;
-  transition: opacity .4s ease, visibility .4s ease;
-}
-
-.video-placeholder.video-hidden {
-  opacity: 0;
-  visibility: hidden;
-  pointer-events: none;
-}
-
-.play-icon {
-  transition: transform .3s ease, background .3s ease;
-}
-
-.video-container:hover .play-icon {
-  transform: scale(1.1);
-  background: rgba(215,173,114,.15);
-}
-
-.video-caption {
-  margin: 16px 2px 2px;
-}
-
-.video-info {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  align-items: center;
-  gap: 10%;
-  margin-top: 38px;
-  padding: 30px 0;
-  border-top: 1px solid var(--line);
-}
-
-.video-info h3 {
-  margin: 12px 0 0;
-  font-family: var(--serif);
-  font-size: 25px;
-  font-weight: 500;
-}
-
-.video-info p {
-  margin: 0;
-  color: #aaa99e;
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-/* ENCERRAMENTO */
-
-.closing-section {
-  position: relative;
-  gap: 30px;
-}
-
-.closing-content {
-  max-width: 620px;
-}
-
-.closing-content h2 {
-  margin-bottom: 18px;
-}
-
-.closing-content > p:not(.eyebrow) {
-  max-width: 430px;
-  color: #aaa99e;
-  font-size: 12px;
-  line-height: 1.9;
-}
-
-.closing-content .text-link {
-  margin-top: 15px;
-}
-
-/* ANIMAÇÕES */
-
-.reveal {
-  opacity: 0;
-  transform: translateY(25px);
-  transition: opacity .8s ease, transform .8s ease;
-}
-
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* RESPONSIVIDADE */
-
-@media (max-width: 850px) {
-
-  .reflection-hero-art {
-    right: 5vw;
-    width: 38vw;
-    opacity: .55;
-  }
-
-  .reflection-card {
-    padding: 28px;
-  }
-
-}
-
-@media (max-width: 620px) {
-
-  .reflection-hero {
-    min-height: 480px;
-  }
-
-  .reflection-hero-art {
-    top: auto;
-    right: 0;
-    bottom: 10px;
-    width: 65%;
-    height: 230px;
-    opacity: .32;
-  }
-
-  .reflection-hero .page-hero-content {
-    max-width: 100%;
-  }
-
-  .reflection-intro {
-    margin-top: 35px;
-  }
-
-  .reflection-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .reflection-card {
-    min-height: 350px;
-  }
-
-  .reflection-highlight {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 20px;
-    padding: 25px;
-  }
-
-  .video-container {
-    padding: 8px;
-  }
-
-  .video-info {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .closing-section {
-    flex-direction: column;
-  }
-
-}
-
-@media (prefers-reduced-motion: reduce) {
-
-  .reflection-light {
-    animation: none;
-  }
-
-  .reveal {
-    opacity: 1;
-    transform: none;
-  }
-
 }
